@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@rulecms/flexbox-based-ui-composer": [
+        "flexbox-based-ui-composer/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -1,0 +1,9 @@
+{
+  "name": "flexbox-based-ui-composer",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "flexbox-based-ui-composer/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project flexbox-based-ui-composer --web",
+  "targets": {}
+}
