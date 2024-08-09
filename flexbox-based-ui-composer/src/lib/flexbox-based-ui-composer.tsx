@@ -1,9 +1,10 @@
-import styles from './flexbox-based-ui-composer.module.css';
+import './flexbox-based-ui-composer.css'; //imports css files as is without modifying class names using the rollup-plugin-postcss
+import { DragDropContainer } from './DragDropContainer';
 
 export function FlexboxBasedUiComposer() {
   return (
-    <div className={styles['container']}>
-      <h1>Welcome to FlexboxBasedUiComposer!</h1>
+    <div className={`container`}>
+      <DragDropContainer/>
     </div>
   );
 }
