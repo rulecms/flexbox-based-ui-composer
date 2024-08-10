@@ -128,7 +128,7 @@ const fabEntries = [
 
 const iconEntries = [
   {
-    id: 'wired-fab-favorite',
+    id: 'wired-icon-favorite',
     card: (
       <WiredIconButton color="red">
         <Favorite />
@@ -136,7 +136,7 @@ const iconEntries = [
     ),
   },
   {
-    id: 'wired-fab-Close',
+    id: 'wired-icon-Close',
     card: (
       <WiredIconButton color="red">
         <Close />
@@ -144,7 +144,7 @@ const iconEntries = [
     ),
   },
   {
-    id: 'wired-fab-thumb-up',
+    id: 'wired-icon-thumb-up',
     card: (
       <WiredIconButton color="#FFCC00">
         <ThumbUp />
@@ -152,7 +152,7 @@ const iconEntries = [
     ),
   },
   {
-    id: 'wired-fab-star',
+    id: 'wired-icon-star',
     card: (
       <WiredIconButton>
         <Star />
@@ -160,7 +160,7 @@ const iconEntries = [
     ),
   },
   {
-    id: 'wired-fab-check',
+    id: 'wired-icon-check',
     card: (
       <WiredIconButton>
         <Check />

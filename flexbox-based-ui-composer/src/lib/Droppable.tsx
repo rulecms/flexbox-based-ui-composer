@@ -6,9 +6,8 @@ export function Droppable(props: any) {
     id: props.id,
   });
   const style = {
-    color: isOver ? 'green' : undefined,
+    border: isOver ? '3px dashed green' : '1px dashed gray',
   };
-  
   
   return (
     <div ref={setNodeRef} style={style}>
