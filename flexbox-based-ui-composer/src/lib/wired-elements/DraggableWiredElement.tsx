@@ -1,9 +1,9 @@
-import { Draggable } from "../Draggable";
+import { DraggableWithoutButtonLook } from "../DraggableWithoutButtonLook";
 
 export function DraggableWiredElement({id, card}: {id: string, card: any}) {
     return (
-        <Draggable id={id}>
+        <DraggableWithoutButtonLook id={id}>
             {card}
-        </Draggable>
+        </DraggableWithoutButtonLook>
     );
 }

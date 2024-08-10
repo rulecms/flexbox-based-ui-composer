@@ -27,6 +27,8 @@ import {
   WiredVideo
 } from './index';
 
+import { Favorite, Close, ThumbUp, Star, Check } from '@mui/icons-material';
+
 const buttonPanelEntries = [
   { id: 'wired-button-disabled', card: <WiredButton disabled={true} /> },
   { id: 'wired-button-default', card: <WiredButton /> },
@@ -60,10 +62,28 @@ const formEntries = [
 
 const dialogEntries = [
   { id: 'wired-dialog-default', card: <WiredDialog /> },
-]
-  const allEntries = [
+];
+
+const dividerEntries = [
   { id: 'wired-divider-default', card: <WiredDivider /> },
-  { id: 'wired-fab-default', card: <WiredFab /> },
+];
+
+const fabEntries = [
+  { id: 'wired-fab-favorite', card: <WiredFab color="red"><Favorite /></WiredFab> },
+  { id: 'wired-fab-Close', card: <WiredFab color="red"><Close /></WiredFab> },
+  { id: 'wired-fab-thumb-up', card: <WiredFab color="yellow"><ThumbUp/></WiredFab> },
+  { id: 'wired-fab-star', card: <WiredFab><Star /></WiredFab> },
+  { id: 'wired-fab-check', card: <WiredFab><Check /></WiredFab> },
+];
+
+const iconEntries = [
+  { id: 'wired-fab-favorite', card: <WiredIconButton color="red"><Favorite /></WiredIconButton> },
+  { id: 'wired-fab-Close', card: <WiredIconButton color="red"><Close /></WiredIconButton> },
+  { id: 'wired-fab-thumb-up', card: <WiredIconButton color="#FFCC00"><ThumbUp/></WiredIconButton> },
+  { id: 'wired-fab-star', card: <WiredIconButton><Star /></WiredIconButton> },
+  { id: 'wired-fab-check', card: <WiredIconButton><Check /></WiredIconButton> },
+];
+  const allEntries = [
   { id: 'wired-icon-button-default', card: <WiredIconButton /> },
   { id: 'wired-image-default', card: <WiredImage /> },
   { id: 'wired-link-default', card: <WiredLink /> },
@@ -98,6 +118,9 @@ export function WiredElementsContainer() {
     <>
       <RenderSelectionPanel title="Buttons" entries={buttonPanelEntries} />
       <RenderSelectionPanel title="Cards" entries={cardPanelEntries} />
+      <RenderSelectionPanel title="Dividers" entries={dividerEntries} />
+      <RenderSelectionPanel title="Floating Action Buttons" entries={fabEntries} />
+      <RenderSelectionPanel title="Icon Buttons" entries={iconEntries} />
       <RenderSelectionPanel title="Dialogs" entries={dialogEntries} />
       <RenderSelectionPanel title="Form Fields" entries={formEntries} />
       <RenderSelectionPanel title="Calendars" entries={calendarEntries} />

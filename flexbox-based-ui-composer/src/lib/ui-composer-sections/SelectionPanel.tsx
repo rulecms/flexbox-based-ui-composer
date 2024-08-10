@@ -8,7 +8,7 @@ export function SelectionPanel({ title, children }: any) {
         margin: `5px`,
         padding: `10px`,
         border: `1px solid #cccccc`,
-        backgroundColor: `lightgray`,
+        backgroundColor: `white`,
         borderRadius: `4px`,
       }}
     >
