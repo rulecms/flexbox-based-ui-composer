@@ -26,6 +26,7 @@ declare global {
       'wired-slider': any;
       'wired-spinner': any;
       'wired-tabs': any;
+      'wired-tab': any;
       'wired-textarea': any;
       'wired-toggle': any;
       'wired-video': any;

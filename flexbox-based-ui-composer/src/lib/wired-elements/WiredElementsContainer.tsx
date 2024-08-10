@@ -24,7 +24,7 @@ import {
   WiredTabs,
   WiredTextarea,
   WiredToggle,
-  WiredVideo
+  WiredVideo,
 } from './index';
 
 import { Favorite, Close, ThumbUp, Star, Check } from '@mui/icons-material';
@@ -40,12 +40,16 @@ const buttonPanelEntries = [
 
 const cardPanelEntries = [
   { id: 'wired-card-default', card: <WiredCard /> },
-  { id: 'wired-card-elevation-2', card: <WiredCard elevation="2"/> },
-  { id: 'wired-card-elevation-3', card: <WiredCard elevation="3"/> },
-  { id: 'wired-card-elevation-4', card: <WiredCard elevation="4"/> },
-  { id: 'wired-card-fill', card: <WiredCard fill="#aabbcc"/> },
+  { id: 'wired-card-elevation-2', card: <WiredCard elevation="2" /> },
+  { id: 'wired-card-elevation-3', card: <WiredCard elevation="3" /> },
+  { id: 'wired-card-elevation-4', card: <WiredCard elevation="4" /> },
+  { id: 'wired-card-fill', card: <WiredCard fill="#aabbcc" /> },
 ];
 
+const mediaPanelEntries = [
+  { id: 'wired-image-default', card: <WiredImage /> },
+  { id: 'wired-video-default', card: <WiredVideo /> },
+];
 const calendarEntries = [
   { id: 'wired-calendar-default', card: <WiredCalendar /> },
 ];
@@ -58,46 +62,138 @@ const formEntries = [
   { id: 'wired-listbox-default', card: <WiredListbox /> },
   { id: 'wired-checkbox-default', card: <WiredCheckbox /> },
   { id: 'wired-toggle-default', card: <WiredToggle /> },
-]
-
-const dialogEntries = [
-  { id: 'wired-dialog-default', card: <WiredDialog /> },
+  { id: 'wired-slider-default', card: <WiredSlider /> },
 ];
+const wiredRadioButtonEntries = [
+  { id: 'wired-radio-default', card: <WiredRadio>Radio 1</WiredRadio> },
+  { id: 'wired-radio-checked', card: <WiredRadio checked>Radio 2</WiredRadio> },
+  {
+    id: 'wired-radio-disabled',
+    card: <WiredRadio disabled>Radio 3</WiredRadio>,
+  },
+];
+
+const wiredRadioGroupEntries = [
+  { id: 'wired-radio-group-default', card: <WiredRadioGroup /> },
+];
+
+const dialogEntries = [{ id: 'wired-dialog-default', card: <WiredDialog /> }];
 
 const dividerEntries = [
   { id: 'wired-divider-default', card: <WiredDivider /> },
 ];
 
 const fabEntries = [
-  { id: 'wired-fab-favorite', card: <WiredFab color="red"><Favorite /></WiredFab> },
-  { id: 'wired-fab-Close', card: <WiredFab color="red"><Close /></WiredFab> },
-  { id: 'wired-fab-thumb-up', card: <WiredFab color="yellow"><ThumbUp/></WiredFab> },
-  { id: 'wired-fab-star', card: <WiredFab><Star /></WiredFab> },
-  { id: 'wired-fab-check', card: <WiredFab><Check /></WiredFab> },
+  {
+    id: 'wired-fab-favorite',
+    card: (
+      <WiredFab color="red">
+        <Favorite />
+      </WiredFab>
+    ),
+  },
+  {
+    id: 'wired-fab-Close',
+    card: (
+      <WiredFab color="red">
+        <Close />
+      </WiredFab>
+    ),
+  },
+  {
+    id: 'wired-fab-thumb-up',
+    card: (
+      <WiredFab color="yellow">
+        <ThumbUp />
+      </WiredFab>
+    ),
+  },
+  {
+    id: 'wired-fab-star',
+    card: (
+      <WiredFab>
+        <Star />
+      </WiredFab>
+    ),
+  },
+  {
+    id: 'wired-fab-check',
+    card: (
+      <WiredFab>
+        <Check />
+      </WiredFab>
+    ),
+  },
 ];
 
 const iconEntries = [
-  { id: 'wired-fab-favorite', card: <WiredIconButton color="red"><Favorite /></WiredIconButton> },
-  { id: 'wired-fab-Close', card: <WiredIconButton color="red"><Close /></WiredIconButton> },
-  { id: 'wired-fab-thumb-up', card: <WiredIconButton color="#FFCC00"><ThumbUp/></WiredIconButton> },
-  { id: 'wired-fab-star', card: <WiredIconButton><Star /></WiredIconButton> },
-  { id: 'wired-fab-check', card: <WiredIconButton><Check /></WiredIconButton> },
-];
-  const allEntries = [
-  { id: 'wired-icon-button-default', card: <WiredIconButton /> },
-  { id: 'wired-image-default', card: <WiredImage /> },
-  { id: 'wired-link-default', card: <WiredLink /> },
-  { id: 'wired-progress-ring-default', card: <WiredProgressRing /> },
-  { id: 'wired-progress-default', card: <WiredProgress /> },
-  { id: 'wired-radio-group-default', card: <WiredRadioGroup /> },
-  { id: 'wired-radio-default', card: <WiredRadio /> },
-  { id: 'wired-slider-default', card: <WiredSlider /> },
-  { id: 'wired-spinner-default', card: <WiredSpinner /> },
-  { id: 'wired-tabs-default', card: <WiredTabs /> },
-  { id: 'wired-video-default', card: <WiredVideo /> },
+  {
+    id: 'wired-fab-favorite',
+    card: (
+      <WiredIconButton color="red">
+        <Favorite />
+      </WiredIconButton>
+    ),
+  },
+  {
+    id: 'wired-fab-Close',
+    card: (
+      <WiredIconButton color="red">
+        <Close />
+      </WiredIconButton>
+    ),
+  },
+  {
+    id: 'wired-fab-thumb-up',
+    card: (
+      <WiredIconButton color="#FFCC00">
+        <ThumbUp />
+      </WiredIconButton>
+    ),
+  },
+  {
+    id: 'wired-fab-star',
+    card: (
+      <WiredIconButton>
+        <Star />
+      </WiredIconButton>
+    ),
+  },
+  {
+    id: 'wired-fab-check',
+    card: (
+      <WiredIconButton>
+        <Check />
+      </WiredIconButton>
+    ),
+  },
 ];
 
-function RenderSelectionPanel({ title, entries }: { title: string, entries: { id: string, card: JSX.Element }[] }) {
+const wiredLinkPanelEntries = [
+  { id: 'wired-link-default', card: <WiredLink /> },
+  { id: 'wired-link-elevation-3', card: <WiredLink elevation="3" /> },
+];
+const wiredProgressEntries = [
+  // { id: 'wired-progress-ring-default', card: <WiredProgressRing /> }, does not work
+  { id: 'wired-progress-default', card: <WiredProgress /> },
+];
+
+const spinnerPanelEntries = [
+  { id: 'wired-spinner-default', card: <WiredSpinner /> },
+  { id: 'wired-spinner-spinning', card: <WiredSpinner duration="1000" /> },
+];
+
+const tabPanelEntries = [
+  { id: 'wired-tabs-default', card: <WiredTabs /> },
+];
+
+function RenderSelectionPanel({
+  title,
+  entries,
+}: {
+  title: string;
+  entries: { id: string; card: JSX.Element }[];
+}) {
   return (
     <SelectionPanel title={title}>
       {entries.map((entry) => (
@@ -116,15 +212,30 @@ function RenderSelectionPanel({ title, entries }: { title: string, entries: { id
 export function WiredElementsContainer() {
   return (
     <>
-      <RenderSelectionPanel title="Buttons" entries={buttonPanelEntries} />
       <RenderSelectionPanel title="Cards" entries={cardPanelEntries} />
+      <RenderSelectionPanel title="Tabs" entries={tabPanelEntries} />
       <RenderSelectionPanel title="Dividers" entries={dividerEntries} />
-      <RenderSelectionPanel title="Floating Action Buttons" entries={fabEntries} />
+      <RenderSelectionPanel title="Media" entries={mediaPanelEntries} />
+      <RenderSelectionPanel title="Buttons" entries={buttonPanelEntries} />
       <RenderSelectionPanel title="Icon Buttons" entries={iconEntries} />
-      <RenderSelectionPanel title="Dialogs" entries={dialogEntries} />
+      <RenderSelectionPanel
+        title="Floating Action Buttons"
+        entries={fabEntries}
+      />
+      <RenderSelectionPanel title="Links" entries={wiredLinkPanelEntries} />
+      <RenderSelectionPanel title="Progress" entries={wiredProgressEntries} />
       <RenderSelectionPanel title="Form Fields" entries={formEntries} />
+      <RenderSelectionPanel
+        title="Radio Buttons"
+        entries={wiredRadioButtonEntries}
+      />
+      <RenderSelectionPanel
+        title="Radio Groups"
+        entries={wiredRadioGroupEntries}
+      />
+      <RenderSelectionPanel title="Dialogs" entries={dialogEntries} />
       <RenderSelectionPanel title="Calendars" entries={calendarEntries} />
-      <RenderSelectionPanel title="All" entries={allEntries} />
+      <RenderSelectionPanel title="Spinners" entries={spinnerPanelEntries} />
     </>
   );
 }
