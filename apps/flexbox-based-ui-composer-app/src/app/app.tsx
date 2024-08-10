@@ -4,9 +4,7 @@ import { FlexboxBasedUiComposer } from '@rulecms/flexbox-based-ui-composer';
 
 export function App() {
   return (
-    <div>
-      <FlexboxBasedUiComposer />
-    </div>
+    <FlexboxBasedUiComposer />
   );
 }
 

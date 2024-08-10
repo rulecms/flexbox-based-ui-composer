@@ -3,9 +3,7 @@ import { DragDropContainer } from './DragDropContainer';
 
 export function FlexboxBasedUiComposer() {
   return (
-    <div className={`container`}>
       <DragDropContainer/>
-    </div>
   );
 }
 

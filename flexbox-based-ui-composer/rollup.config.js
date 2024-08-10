@@ -1,4 +1,4 @@
-import postcss from 'rollup-plugin-postcss';
+// import postcss from 'rollup-plugin-postcss';
 const { withNx } = require('@nx/rollup/with-nx');
 const url = require('@rollup/plugin-url');
 const svg = require('@svgr/rollup');
@@ -24,19 +24,19 @@ module.exports = withNx(
       url({
         limit: 10_000, // 10kB
       }),
-      postcss({
-        // Extract CSS to a separate file
-        extract: false, // Set to true if you want a separate CSS file
+      // postcss({
+      //   // Extract CSS to a separate file
+      //   extract: false, // Set to true if you want a separate CSS file
   
-        // Enable source maps for debugging
-        sourceMap: true,
+      //   // Enable source maps for debugging
+      //   sourceMap: true,
   
-        // Minify CSS for production
-        minimize: true,
+      //   // Minify CSS for production
+      //   minimize: true,
   
-        // Include any additional PostCSS plugins if needed
-        plugins: [],
-      }),
+      //   // Include any additional PostCSS plugins if needed
+      //   plugins: [],
+      // }),
     ],
   }
 );
