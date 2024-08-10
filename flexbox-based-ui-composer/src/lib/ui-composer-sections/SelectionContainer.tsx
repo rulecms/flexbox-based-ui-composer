@@ -3,7 +3,7 @@ export function SelectionContainer({ children }: any) {
     <div
       style={{
         minWidth: `400px`,
-        maxWidth: `700px`,
+        maxWidth: `450px`,
         padding: `10px`,
         backgroundColor: `darkgray`,
         height: `100%`,

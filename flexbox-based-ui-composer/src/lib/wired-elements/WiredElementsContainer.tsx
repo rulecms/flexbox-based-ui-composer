@@ -214,8 +214,8 @@ export function WiredElementsContainer() {
     <>
       <RenderSelectionPanel title="Cards" entries={cardPanelEntries} />
       <RenderSelectionPanel title="Tabs" entries={tabPanelEntries} />
-      <RenderSelectionPanel title="Dividers" entries={dividerEntries} />
       <RenderSelectionPanel title="Media" entries={mediaPanelEntries} />
+      <RenderSelectionPanel title="Dividers" entries={dividerEntries} />
       <RenderSelectionPanel title="Buttons" entries={buttonPanelEntries} />
       <RenderSelectionPanel title="Icon Buttons" entries={iconEntries} />
       <RenderSelectionPanel
