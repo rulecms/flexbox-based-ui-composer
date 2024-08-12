@@ -1,29 +1,39 @@
+import { useSelector } from 'react-redux';
 import { Droppable } from '../Droppable';
+import { DisplayComponentBasedOnType } from '../wired-elements/DisplayComponentBasedOnType';
 
-export function ComposePlayground({ children }: any) {
-const containers = Array.from({ length: 26 }, (_, index) => String.fromCharCode(65 + index));
+
+export function ComposePlayground() {
+  const itemList = useSelector((state: any) => state.composePlayground.itemList)
   return (
-    <div style={{ height: `100%`, backgroundColor: `lightgray` }}>
-      <div
-        className="flex auto flex-wrap flex-row"
-      >
-        {containers.map((id) => (
-          <Droppable key={id} id={id}>
-            <div
-              className="flex justify-center items-center"
-              style={{
-                height: `400px`,
-                width: `400px`,
-                backgroundColor: `gray`,
-                margin: `10px`,
-                padding: `10px`,
-              }}
+    <div>
+      <div>
+        {itemList.map((row: any) => (
+              <div key={row.id}
+              className="flex auto flex-wrap flex-row"
             >
-              {id}
-            </div>
-          </Droppable>
+              {row.columns.map((item: any) => (
+                <div key={item.id}>
+                    {item.type === 'droppable-box'? (
+                        <Droppable id={item.id}>
+                            <div
+                                className="flex justify-center items-center"
+                                style={{
+                                    height: `400px`,
+                                    width: `400px`,
+                                    margin: `10px`,
+                                    padding: `10px`,
+                                }}
+                            >
+                                {item.id}
+                            </div>
+                        </Droppable> 
+                    ): <DisplayComponentBasedOnType type={item.type} />}
+                </div>
+              ))}
+          </div>
         ))}
       </div>
     </div>
-  );
+  )
 }

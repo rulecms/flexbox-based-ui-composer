@@ -1,5 +1,5 @@
 import { WiredElementsContainer } from "./WiredElementsContainer";
-import { ComposePlayground } from "../ui-composer-sections/ComposePlayground";
+import { ComposePlaygroundContainer } from "../ui-composer-sections/ComposePlayground.container";
 import { SelectionContainer } from "../ui-composer-sections/SelectionContainer";
 import { TopLevelContainer } from "../ui-composer-sections/TopLevelContainer";
 
@@ -11,6 +11,6 @@ export function MockedUIComposer({children}: any) {
         </SelectionContainer>
     );
     return (
-        <TopLevelContainer left={left} right={<ComposePlayground/>} />
+        <TopLevelContainer left={left} right={<ComposePlaygroundContainer />} />
     );
 }
