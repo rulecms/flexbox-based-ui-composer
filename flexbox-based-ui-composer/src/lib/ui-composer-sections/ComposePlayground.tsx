@@ -2,27 +2,35 @@ import { useSelector } from 'react-redux';
 import { Droppable } from '../Droppable';
 import { DisplayComponentBasedOnType } from '../wired-elements/DisplayComponentBasedOnType';
 
+import { ComposePlaygroundState, DisplayItemColumn, DisplayItemRow, DisplayItemType } from '../redux/compose-playground/types.d';
+import { getModifiedListWithDroppableContainers } from '../redux/compose-playground/get-modified-list-with-droppable-containers';
 
 export function ComposePlayground() {
-  const itemList = useSelector((state: any) => state.composePlayground.itemList)
+  const itemList = useSelector((state: {composePlayground: ComposePlaygroundState}) => state.composePlayground.itemList);
+
+
+
+  const displayItemList = getModifiedListWithDroppableContainers(itemList);
+
   return (
     <div>
       <div>
-        {itemList.map((row: any) => (
+        {displayItemList.map((row: DisplayItemRow) => (
               <div key={row.id}
               className="flex auto flex-wrap flex-row"
             >
-              {row.columns.map((item: any) => (
+              {row.columns.map((item: DisplayItemColumn) => (
                 <div key={item.id}>
-                    {item.type === 'droppable-box'? (
+                    {item.type === DisplayItemType.DroppableBox? (
                         <Droppable id={item.id}>
                             <div
-                                className="flex justify-center items-center"
+                                className="flex justify-center items-center flex-nowrap"
                                 style={{
-                                    height: `400px`,
-                                    width: `400px`,
+                                    height: `50px`,
+                                    width: `150px`,
                                     margin: `10px`,
                                     padding: `10px`,
+                                    overflow: `hidden`,
                                 }}
                             >
                                 {item.id}

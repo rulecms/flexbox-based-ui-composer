@@ -1,14 +1,14 @@
 import { generateUniqueId } from './generate-unique-id';
-import { DisplayItemRow, DisplayItemType } from './types.d';
+import { DisplayItemRow, DisplayItemType } from './types';
 
-export function getNewStateForDroppableBox(): DisplayItemRow {
+export const getNewItemForItemType = (itemType: DisplayItemType): DisplayItemRow => {
   return {
     id: generateUniqueId(),
     columns: [
       {
-        type: DisplayItemType.DroppableBox,
+        type: itemType,
         id: generateUniqueId(),
       },
     ],
   };
-}
+};

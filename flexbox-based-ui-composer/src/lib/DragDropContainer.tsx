@@ -22,7 +22,7 @@ export function DragDropContainer() {
       dispatch(
         addItem({
           itemTypeToBeAdded: event.active.id,
-          addToItemId: event.over.id,
+          droppedRefId: event.over.id,
         })
       );
     }

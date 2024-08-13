@@ -1,5 +1,5 @@
-import { getNewStateForDroppableBox } from './get-new-state-for-droppable-box';
+import { DisplayItemRow } from './types';
 
-export const getInitialItemList = () => {
-  return [getNewStateForDroppableBox()];
+export const getInitialItemList = (): DisplayItemRow[] => {
+  return [];
 };
