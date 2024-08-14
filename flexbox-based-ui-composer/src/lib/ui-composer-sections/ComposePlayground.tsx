@@ -3,15 +3,9 @@ import { Droppable } from '../Droppable';
 import { DisplayComponentBasedOnType } from '../wired-elements/DisplayComponentBasedOnType';
 
 import { ComposePlaygroundState, DisplayItemColumn, DisplayItemRow, DisplayItemType } from '../redux/compose-playground/types.d';
-import { getModifiedListWithDroppableContainers } from '../redux/compose-playground/get-modified-list-with-droppable-containers';
 
 export function ComposePlayground() {
-  const itemList = useSelector((state: {composePlayground: ComposePlaygroundState}) => state.composePlayground.itemList);
-
-
-
-  const displayItemList = getModifiedListWithDroppableContainers(itemList);
-
+  const displayItemList = useSelector((state: {composePlayground: ComposePlaygroundState}) => state.composePlayground.displayItemList);
   return (
     <div>
       <div>

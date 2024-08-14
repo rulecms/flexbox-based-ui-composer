@@ -1,12 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getInitialItemList } from './get-initial-item-list';
 import {
-  DisplayItemColumn,
-  DisplayItemRow,
   ComposePlaygroundState,
   PositionIndicesItemList,
 } from './types';
 import { getNewItemForItemType } from './get-new-item-for-item-type';
+import { getModifiedListWithDroppableContainers } from './get-modified-list-with-droppable-containers';
+import { getNewStateForDroppableBox } from './get-new-state-for-droppable-box';
 
 // Redux Toolkit allows us to write "mutating" logic in reducers. It
 // doesn't actually mutate the state because it uses the Immer library,
@@ -14,7 +13,8 @@ import { getNewItemForItemType } from './get-new-item-for-item-type';
 // immutable state based off those changes.
 // Also, no return statement is required from these functions.
 const initialState: ComposePlaygroundState = {
-  itemList: getInitialItemList(),
+  itemList: [],
+  displayItemList: [getNewStateForDroppableBox()],
 };
 
 const getIndexFromDroppedRefIdForAbove = (
@@ -67,47 +67,51 @@ export const composePlaygroundSlice = createSlice({
     addItem: (state, action) => {
       const itemType = action.payload.itemTypeToBeAdded;
       const droppedRefId = action.payload.droppedRefId;
+      let modified = false;
       if (!(itemType?.length && droppedRefId?.length)) {
         return;
       }
       const newItem = getNewItemForItemType(itemType);
       if (state.itemList.length === 0) {
         state.itemList.push(newItem);
-        return;
+        modified = true;
       }
-      if (droppedRefId.startsWith('above-')) {
+      else if (droppedRefId.startsWith('above-')) {
         const positionIndex = getIndexFromDroppedRefIdForAbove(
           droppedRefId,
           state.itemList
         );
         state.itemList.splice(positionIndex, 0, newItem);
-        return;
+        modified = true;
       }
-      if (droppedRefId.startsWith('below-')) {
+      else if (droppedRefId.startsWith('below-')) {
         const positionIndex = getIndexFromDroppedRefIdForBelow(
           droppedRefId,
           state.itemList
         );
         state.itemList.splice(positionIndex, 0, newItem);
-        return;
+        modified = true;
       }
-      if (droppedRefId.startsWith('left-')) {
+      else if (droppedRefId.startsWith('left-')) {
         const positionIndices = getIndexFromDroppedRefIdForLeft(
           droppedRefId,
           state.itemList
         );
         const row = state.itemList[positionIndices.rowIndex];
         row.columns.splice(positionIndices.colIndex, 0, newItem.columns[0]);
-        return;
+        modified = true;
       }
-      if (droppedRefId.startsWith('right-')) {
+      else if (droppedRefId.startsWith('right-')) {
         const positionIndices = getIndexFromDroppedRefIdForRight(
           droppedRefId,
           state.itemList
         );
         const row = state.itemList[positionIndices.rowIndex];
         row.columns.splice(positionIndices.colIndex, 0, newItem.columns[0]);
-        return;
+        modified = true;
+      }
+      if(modified) {
+        state.displayItemList = getModifiedListWithDroppableContainers(state.itemList);
       }
     },
   },
