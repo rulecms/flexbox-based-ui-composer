@@ -1,7 +1,11 @@
 import React from 'react';
 import { DndContext } from '@dnd-kit/core';
 
-import { addItem } from './redux/compose-playground/compose-playground-slice';
+import {
+  addItem,
+  setDragStart,
+  setDragEnd,
+} from './redux/compose-playground/compose-playground-slice';
 
 import { MockedUIComposer } from './wired-elements/MockedUIComposer';
 import { useDispatch } from 'react-redux';
@@ -16,8 +20,7 @@ export function DragDropContainer() {
   );
 
   function handleDragEnd(event: any) {
-    console.log(event, 'event');
-    console.log(event.over, 'event.over');
+    dispatch(setDragEnd());
     if (event?.over?.id) {
       dispatch(
         addItem({
@@ -28,7 +31,7 @@ export function DragDropContainer() {
     }
   }
 
-  function handleDragStart(event: any) {
-    console.log(event, 'event');
+  function handleDragStart() {
+    dispatch(setDragStart());
   }
 }

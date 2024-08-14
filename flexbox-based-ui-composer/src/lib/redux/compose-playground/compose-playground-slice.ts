@@ -1,8 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  ComposePlaygroundState,
-  PositionIndicesItemList,
-} from './types';
+import { ComposePlaygroundState, PositionIndicesItemList } from './types';
 import { getNewItemForItemType } from './get-new-item-for-item-type';
 import { getModifiedListWithDroppableContainers } from './get-modified-list-with-droppable-containers';
 import { getNewStateForDroppableBox } from './get-new-state-for-droppable-box';
@@ -15,6 +12,7 @@ import { getNewStateForDroppableBox } from './get-new-state-for-droppable-box';
 const initialState: ComposePlaygroundState = {
   itemList: [],
   displayItemList: [getNewStateForDroppableBox()],
+  isDragState: false,
 };
 
 const getIndexFromDroppedRefIdForAbove = (
@@ -56,7 +54,8 @@ const getIndexFromDroppedRefIdForRight = (
   const rowIndex = itemList.findIndex((item) => item.id === rowId);
   return {
     rowIndex,
-    colIndex: itemList[rowIndex].columns.findIndex((col) => col.id === colId) + 1,
+    colIndex:
+      itemList[rowIndex].columns.findIndex((col) => col.id === colId) + 1,
   };
 };
 
@@ -64,6 +63,12 @@ export const composePlaygroundSlice = createSlice({
   name: 'composePlayground',
   initialState,
   reducers: {
+    setDragStart: (state) => {
+      state.isDragState = true;
+    },
+    setDragEnd: (state) => {
+      state.isDragState = false;
+    },
     addItem: (state, action) => {
       const itemType = action.payload.itemTypeToBeAdded;
       const droppedRefId = action.payload.droppedRefId;
@@ -75,24 +80,21 @@ export const composePlaygroundSlice = createSlice({
       if (state.itemList.length === 0) {
         state.itemList.push(newItem);
         modified = true;
-      }
-      else if (droppedRefId.startsWith('above-')) {
+      } else if (droppedRefId.startsWith('above-')) {
         const positionIndex = getIndexFromDroppedRefIdForAbove(
           droppedRefId,
           state.itemList
         );
         state.itemList.splice(positionIndex, 0, newItem);
         modified = true;
-      }
-      else if (droppedRefId.startsWith('below-')) {
+      } else if (droppedRefId.startsWith('below-')) {
         const positionIndex = getIndexFromDroppedRefIdForBelow(
           droppedRefId,
           state.itemList
         );
         state.itemList.splice(positionIndex, 0, newItem);
         modified = true;
-      }
-      else if (droppedRefId.startsWith('left-')) {
+      } else if (droppedRefId.startsWith('left-')) {
         const positionIndices = getIndexFromDroppedRefIdForLeft(
           droppedRefId,
           state.itemList
@@ -100,8 +102,7 @@ export const composePlaygroundSlice = createSlice({
         const row = state.itemList[positionIndices.rowIndex];
         row.columns.splice(positionIndices.colIndex, 0, newItem.columns[0]);
         modified = true;
-      }
-      else if (droppedRefId.startsWith('right-')) {
+      } else if (droppedRefId.startsWith('right-')) {
         const positionIndices = getIndexFromDroppedRefIdForRight(
           droppedRefId,
           state.itemList
@@ -110,14 +111,17 @@ export const composePlaygroundSlice = createSlice({
         row.columns.splice(positionIndices.colIndex, 0, newItem.columns[0]);
         modified = true;
       }
-      if(modified) {
-        state.displayItemList = getModifiedListWithDroppableContainers(state.itemList);
+      if (modified) {
+        state.displayItemList = getModifiedListWithDroppableContainers(
+          state.itemList
+        );
       }
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addItem } = composePlaygroundSlice.actions;
+export const { addItem, setDragStart, setDragEnd } =
+  composePlaygroundSlice.actions;
 
 export default composePlaygroundSlice.reducer;

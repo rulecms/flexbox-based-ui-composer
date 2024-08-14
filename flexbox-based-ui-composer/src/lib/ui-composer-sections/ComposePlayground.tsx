@@ -2,40 +2,57 @@ import { useSelector } from 'react-redux';
 import { Droppable } from '../Droppable';
 import { DisplayComponentBasedOnType } from '../wired-elements/DisplayComponentBasedOnType';
 
-import { ComposePlaygroundState, DisplayItemColumn, DisplayItemRow, DisplayItemType } from '../redux/compose-playground/types.d';
+import {
+  ComposePlaygroundState,
+  DisplayItemColumn,
+  DisplayItemRow,
+  DisplayItemType,
+} from '../redux/compose-playground/types.d';
+import { getDropContainerDimensions } from './get-drop-container-dimensions';
+import React from 'react';
+import { GetStartedContainer } from './GetStartedContainer';
 
 export function ComposePlayground() {
-  const displayItemList = useSelector((state: {composePlayground: ComposePlaygroundState}) => state.composePlayground.displayItemList);
+  const displayItemList = useSelector(
+    (state: { composePlayground: ComposePlaygroundState }) =>
+      state.composePlayground.displayItemList
+  );
+
+  const hasNotStarted =
+    displayItemList.length === 1 && displayItemList[0].columns.length === 1;
+  if (hasNotStarted) {
+    return <GetStartedContainer />;
+  }
   return (
-    <div>
-      <div>
-        {displayItemList.map((row: DisplayItemRow) => (
-              <div key={row.id}
-              className="flex auto flex-wrap flex-row"
-            >
-              {row.columns.map((item: DisplayItemColumn) => (
-                <div key={item.id}>
-                    {item.type === DisplayItemType.DroppableBox? (
-                        <Droppable id={item.id}>
-                            <div
-                                className="flex justify-center items-center flex-nowrap"
-                                style={{
-                                    height: `50px`,
-                                    width: `150px`,
-                                    margin: `10px`,
-                                    padding: `10px`,
-                                    overflow: `hidden`,
-                                }}
-                            >
-                                {item.id}
-                            </div>
-                        </Droppable> 
-                    ): <DisplayComponentBasedOnType type={item.type} />}
-                </div>
-              ))}
-          </div>
-        ))}
-      </div>
-    </div>
-  )
+    <>
+      {displayItemList.map((row: DisplayItemRow) => (
+        <div key={row.id} className="flex auto flex-wrap flex-row">
+          {row.columns.map((col: DisplayItemColumn) => (
+            <React.Fragment key={col.id}>
+              {col.type === DisplayItemType.DroppableBox ? (
+                <Droppable
+                  id={col.id}
+                  dimensions={getDropContainerDimensions(
+                    displayItemList.length,
+                    row.columns.length
+                  )}
+                >
+                  <div
+                    className="flex justify-center items-center flex-nowrap"
+                    style={{
+                      margin: `10px`,
+                      padding: `10px`,
+                      overflow: `hidden`,
+                    }}
+                  ></div>
+                </Droppable>
+              ) : (
+                <DisplayComponentBasedOnType type={col.type} />
+              )}
+            </React.Fragment>
+          ))}
+        </div>
+      ))}
+    </>
+  );
 }

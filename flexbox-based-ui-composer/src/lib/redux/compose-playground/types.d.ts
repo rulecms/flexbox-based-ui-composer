@@ -15,6 +15,7 @@ export enum DisplayItemType {
   export type ComposePlaygroundState = {
     itemList: DisplayItemRow[];
     displayItemList: DisplayItemRow[];
+    isDragState: boolean;
   }
 
   export type PositionIndicesItemList = {
