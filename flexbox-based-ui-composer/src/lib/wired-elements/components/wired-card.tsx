@@ -6,8 +6,8 @@ export function WiredCard({elevation = "1", fill, title="Title", content = "Cont
 }) {
   return (
     <wired-card elevation={elevation} fill={fill}>
-      <div style={{ padding: '10px' }}>
-        <h1>{title || 'Title'}</h1>
+      <div>
+        <h2>{title || 'Title'}</h2>
         <p>{content || 'Content'}</p>
       </div>
     </wired-card>

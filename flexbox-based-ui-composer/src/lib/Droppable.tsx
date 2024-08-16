@@ -21,7 +21,7 @@ export function Droppable({
   );
   const style = {
     border: isOver ? '3px dashed green' : '1px dashed gray',
-    backgroundColor: isOver ? 'rgb(92 90 112)' : '#cccccc',
+    backgroundColor: isOver ? 'rgb(92 90 112)' : 'inherit',
     display: isDragState ? 'block' : 'none',
     ...dimensions,
   };

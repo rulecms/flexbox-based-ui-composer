@@ -1,12 +1,10 @@
-export function SelectionContainer({ children }: any) {
+import { ReactNode } from "react";
+export function SelectionContainer({ children }: { children: ReactNode }) {
   return (
     <div
       style={{
-        minWidth: `400px`,
-        maxWidth: `450px`,
-        padding: `10px`,
-        backgroundColor: `darkgray`,
-        height: `100%`,
+        width: `clamp(450px, 450px, 450px)`,
+        padding: `var(--sl-spacing-small)`,
       }}
     >
       <div className="flex flex-column flex-wrap">{children}</div>

@@ -85,7 +85,7 @@ import {
     {
       id: 'wired-fab-favorite',
       card: (
-        <WiredFab color="red">
+        <WiredFab>
           <Favorite />
         </WiredFab>
       ),
@@ -93,7 +93,7 @@ import {
     {
       id: 'wired-fab-Close',
       card: (
-        <WiredFab color="red">
+        <WiredFab>
           <Close />
         </WiredFab>
       ),
@@ -101,7 +101,7 @@ import {
     {
       id: 'wired-fab-thumb-up',
       card: (
-        <WiredFab color="yellow">
+        <WiredFab>
           <ThumbUp />
         </WiredFab>
       ),
@@ -128,7 +128,7 @@ import {
     {
       id: 'wired-icon-favorite',
       card: (
-        <WiredIconButton color="red">
+        <WiredIconButton>
           <Favorite />
         </WiredIconButton>
       ),
@@ -136,7 +136,7 @@ import {
     {
       id: 'wired-icon-Close',
       card: (
-        <WiredIconButton color="red">
+        <WiredIconButton>
           <Close />
         </WiredIconButton>
       ),
@@ -144,7 +144,7 @@ import {
     {
       id: 'wired-icon-thumb-up',
       card: (
-        <WiredIconButton color="#FFCC00">
+        <WiredIconButton>
           <ThumbUp />
         </WiredIconButton>
       ),

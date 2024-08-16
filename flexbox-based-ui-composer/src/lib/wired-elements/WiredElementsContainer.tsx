@@ -87,7 +87,7 @@ const fabEntries = [
   {
     id: 'wired-fab-favorite',
     card: (
-      <WiredFab color="red">
+      <WiredFab>
         <Favorite />
       </WiredFab>
     ),
@@ -95,7 +95,7 @@ const fabEntries = [
   {
     id: 'wired-fab-Close',
     card: (
-      <WiredFab color="red">
+      <WiredFab>
         <Close />
       </WiredFab>
     ),
@@ -103,7 +103,7 @@ const fabEntries = [
   {
     id: 'wired-fab-thumb-up',
     card: (
-      <WiredFab color="yellow">
+      <WiredFab>
         <ThumbUp />
       </WiredFab>
     ),
@@ -130,7 +130,7 @@ const iconEntries = [
   {
     id: 'wired-icon-favorite',
     card: (
-      <WiredIconButton color="red">
+      <WiredIconButton>
         <Favorite />
       </WiredIconButton>
     ),
@@ -138,7 +138,7 @@ const iconEntries = [
   {
     id: 'wired-icon-Close',
     card: (
-      <WiredIconButton color="red">
+      <WiredIconButton>
         <Close />
       </WiredIconButton>
     ),
@@ -146,7 +146,7 @@ const iconEntries = [
   {
     id: 'wired-icon-thumb-up',
     card: (
-      <WiredIconButton color="#FFCC00">
+      <WiredIconButton>
         <ThumbUp />
       </WiredIconButton>
     ),
@@ -197,7 +197,7 @@ function RenderSelectionPanel({
   return (
     <SelectionPanel title={title}>
       {entries.map((entry) => (
-        <div style={{ padding: '10px' }} key={`${entry.id}-container`}>
+        <div key={`${entry.id}-container`}>
           <DraggableWiredElement
             key={entry.id}
             id={entry.id}

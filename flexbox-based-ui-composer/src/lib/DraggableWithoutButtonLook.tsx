@@ -9,9 +9,9 @@ export function DraggableWithoutButtonLook(props: any) {
     transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
   } : {
     display: 'inline-block',
-    padding: '10px',
+    padding: 'var(--sl-spacing-large)',
     border: 'none',
-    borderRadius: '5px',
+    borderRadius: 'var(--sl-spacing-small)',
     backgroundColor: 'transparent',
     cursor: 'grab',
   }

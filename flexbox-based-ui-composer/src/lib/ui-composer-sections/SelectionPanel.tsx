@@ -3,13 +3,11 @@ export function SelectionPanel({ title, children }: any) {
     <div
       className="grow-0"
       style={{
-        minWidth: `300px`,
-        width: `100%`,
-        margin: `5px`,
-        padding: `10px`,
-        border: `1px solid #cccccc`,
-        backgroundColor: `white`,
-        borderRadius: `4px`,
+        width: `clamp(450px, 450px, 450px)`,
+        margin: `var(--sl-spacing-3x-small)`,
+        padding: `var(--sl-spacing-small)`,
+        border: `1px solid var(--sl-color-primary-400)`,
+        borderRadius: `var(--sl-spacing-small)`,
       }}
     >
       <div>{title}</div>

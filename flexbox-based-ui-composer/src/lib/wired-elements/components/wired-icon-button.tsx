@@ -1,9 +1,9 @@
+import { ReactNode } from 'react';
+
 export function WiredIconButton({
   children,
-  color = `black`,
 }: {
-  children?: any;
-  color?: string;
+  children?: ReactNode;
 }) {
-  return <wired-icon-button style={{ color }}>{children}</wired-icon-button>;
+  return <wired-icon-button>{children}</wired-icon-button>;
 }
