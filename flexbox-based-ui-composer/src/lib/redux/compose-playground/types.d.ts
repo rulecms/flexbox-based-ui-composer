@@ -16,6 +16,7 @@ export enum DisplayItemType {
     itemList: DisplayItemRow[];
     displayItemList: DisplayItemRow[];
     isDragState: boolean;
+    selectionCardDisplayStatuses: { [key: string]: boolean };
   }
 
   export type PositionIndicesItemList = {

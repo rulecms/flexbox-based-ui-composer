@@ -13,6 +13,7 @@ const initialState: ComposePlaygroundState = {
   itemList: [],
   displayItemList: [getNewStateForDroppableBox()],
   isDragState: false,
+  selectionCardDisplayStatuses: {},
 };
 
 const getIndexFromDroppedRefIdForAbove = (
@@ -117,11 +118,20 @@ export const composePlaygroundSlice = createSlice({
         );
       }
     },
+    toggleSelectionCardDisplayStatus: (state, action) => {
+      const selectionCardId = action.payload;
+      const newStatus = !state.selectionCardDisplayStatuses[selectionCardId];;
+      state.selectionCardDisplayStatuses[selectionCardId] = newStatus;
+    },
+    switchOnSelectionCardDisplayStatus: (state, action) => {
+      const selectionCardId = action.payload;
+      state.selectionCardDisplayStatuses[selectionCardId] = true;
+    }
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addItem, setDragStart, setDragEnd } =
+export const { addItem, setDragStart, setDragEnd, toggleSelectionCardDisplayStatus, switchOnSelectionCardDisplayStatus } =
   composePlaygroundSlice.actions;
 
 export default composePlaygroundSlice.reducer;

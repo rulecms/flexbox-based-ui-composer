@@ -1,5 +1,6 @@
 import { SelectionPanel } from '../ui-composer-sections/SelectionPanel';
 import { DraggableWiredElement } from './DraggableWiredElement';
+import { useSelector } from 'react-redux';
 import {
   WiredCard,
   WiredButton,
@@ -28,6 +29,7 @@ import {
 } from './index';
 
 import { Favorite, Close, ThumbUp, Star, Check } from '@mui/icons-material';
+import { CardGroup } from '../types';
 
 const buttonPanelEntries = [
   { id: 'wired-button-disabled', card: <WiredButton disabled={true} /> },
@@ -183,8 +185,47 @@ const spinnerPanelEntries = [
   { id: 'wired-spinner-spinning', card: <WiredSpinner duration="1000" /> },
 ];
 
-const tabPanelEntries = [
-  { id: 'wired-tabs-default', card: <WiredTabs /> },
+const tabPanelEntries = [{ id: 'wired-tabs-default', card: <WiredTabs /> }];
+
+export const cardGroups: CardGroup[] = [
+  { title: 'Cards', cards: [{ title: 'Cards', entries: cardPanelEntries }] },
+  { title: 'Media', cards: [{ title: 'Media', entries: mediaPanelEntries }] },
+  {
+    title: 'Dividers',
+    cards: [{ title: 'Dividers', entries: dividerEntries }],
+  },
+  {
+    title: 'Buttons/Links',
+    cards: [
+      { title: 'Buttons', entries: buttonPanelEntries },
+      { title: 'Links', entries: wiredLinkPanelEntries },
+      { title: 'Icon Buttons', entries: iconEntries },
+      { title: 'Floating Action Buttons', entries: fabEntries },
+    ],
+  },
+
+  { title: 'Tabs', cards: [{ title: 'Tabs', entries: tabPanelEntries }] },
+  {
+    title: 'Form Fields',
+    cards: [
+      { title: 'Form Fields', entries: formEntries },
+      { title: 'Radio Buttons', entries: wiredRadioButtonEntries },
+      { title: 'Radio Groups', entries: wiredRadioGroupEntries },
+    ],
+  },
+
+  { title: 'Dialogs', cards: [{ title: 'Dialogs', entries: dialogEntries }] },
+  {
+    title: 'Calendars',
+    cards: [{ title: 'Calendars', entries: calendarEntries }],
+  },
+  {
+    title: 'Progress Indicators',
+    cards: [
+      { title: 'Progress', entries: wiredProgressEntries },
+      { title: 'Spinners', entries: spinnerPanelEntries },
+    ],
+  },
 ];
 
 function RenderSelectionPanel({
@@ -194,6 +235,25 @@ function RenderSelectionPanel({
   title: string;
   entries: { id: string; card: JSX.Element }[];
 }) {
+  const displayStatus = useSelector(
+    (state: { composePlayground }) =>
+      state.composePlayground.selectionCardDisplayStatuses
+  );
+
+  function displayOn() {
+    let result = false;
+    cardGroups.forEach(({ title: cardGroupsTitle, cards }) => {
+      const cardTitles = cards.map(({ title }) => title);
+      if (cardTitles.includes(title)) {
+        result = !!displayStatus[cardGroupsTitle];
+      }
+    });
+    return result;
+  }
+
+  if (!displayOn()) {
+    return null;
+  }
   return (
     <SelectionPanel title={title}>
       {entries.map((entry) => (
@@ -210,32 +270,9 @@ function RenderSelectionPanel({
 }
 
 export function WiredElementsContainer() {
-  return (
-    <>
-      <RenderSelectionPanel title="Cards" entries={cardPanelEntries} />
-      <RenderSelectionPanel title="Tabs" entries={tabPanelEntries} />
-      <RenderSelectionPanel title="Media" entries={mediaPanelEntries} />
-      <RenderSelectionPanel title="Dividers" entries={dividerEntries} />
-      <RenderSelectionPanel title="Buttons" entries={buttonPanelEntries} />
-      <RenderSelectionPanel title="Icon Buttons" entries={iconEntries} />
-      <RenderSelectionPanel
-        title="Floating Action Buttons"
-        entries={fabEntries}
-      />
-      <RenderSelectionPanel title="Links" entries={wiredLinkPanelEntries} />
-      <RenderSelectionPanel title="Progress" entries={wiredProgressEntries} />
-      <RenderSelectionPanel title="Form Fields" entries={formEntries} />
-      <RenderSelectionPanel
-        title="Radio Buttons"
-        entries={wiredRadioButtonEntries}
-      />
-      <RenderSelectionPanel
-        title="Radio Groups"
-        entries={wiredRadioGroupEntries}
-      />
-      <RenderSelectionPanel title="Dialogs" entries={dialogEntries} />
-      <RenderSelectionPanel title="Calendars" entries={calendarEntries} />
-      <RenderSelectionPanel title="Spinners" entries={spinnerPanelEntries} />
-    </>
-  );
+  return cardGroups.map(({ cards }) => {
+    return cards.map(({ title, entries }) => {
+      return <RenderSelectionPanel key={title} title={title} entries={entries} />;
+    });
+  });
 }
