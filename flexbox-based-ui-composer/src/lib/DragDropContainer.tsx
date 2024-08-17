@@ -11,27 +11,16 @@ import {
 import { MockedUIComposer } from './wired-elements/MockedUIComposer';
 import { useDispatch } from 'react-redux';
 import { restrictToWindowEdges } from '@dnd-kit/modifiers';
-import { DisplayComponentBasedOnType } from './wired-elements/DisplayComponentBasedOnType';
+import { componentAndIdArray } from './wired-elements/card-groups';
 
 export function DragDropContainer() {
   const [activeId, setActiveId] = useState(null);
   const dispatch = useDispatch();
 
-  return (
-    <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
-      {createPortal(
-        <DragOverlay dropAnimation={null} modifiers={[restrictToWindowEdges]}>
-          {activeId ? (
-            <div style={{backgroundColor: `var(--sl-color-primary-50)`}}>
-              <DisplayComponentBasedOnType type={activeId} />
-            </div>
-          ) : null}
-        </DragOverlay>,
-        document.body
-      )}
-      <MockedUIComposer />
-    </DndContext>
-  );
+  function handleDragStart(event: any) {
+    setActiveId(event.active.id);
+    dispatch(setDragStart());
+  }
 
   function handleDragEnd(event: any) {
     dispatch(setDragEnd());
@@ -45,8 +34,19 @@ export function DragDropContainer() {
     }
   }
 
-  function handleDragStart(event: any) {
-    setActiveId(event.active.id);
-    dispatch(setDragStart());
-  }
+  return (
+    <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
+      {createPortal(
+        <DragOverlay dropAnimation={null} modifiers={[restrictToWindowEdges]}>
+          {activeId ? (
+            <div style={{backgroundColor: `var(--sl-color-primary-50)`}}>
+              {componentAndIdArray.find((entry) => entry.id === activeId)?.card || null}
+            </div>
+          ) : null}
+        </DragOverlay>,
+        document.body
+      )}
+      <MockedUIComposer />
+    </DndContext>
+  );
 }

@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { Droppable } from '../Droppable';
-import { DisplayComponentBasedOnType } from '../wired-elements/DisplayComponentBasedOnType';
 
 import {
   ComposePlaygroundState,
@@ -12,7 +11,7 @@ import { getDropContainerDimensions } from './get-drop-container-dimensions';
 import React from 'react';
 import { GetStartedContainer } from './GetStartedContainer';
 
-export function ComposePlayground() {
+export function ComposePlayground({ componentList }) {
   const displayItemList = useSelector(
     (state: { composePlayground: ComposePlaygroundState }) =>
       state.composePlayground.displayItemList
@@ -47,7 +46,7 @@ export function ComposePlayground() {
                   ></div>
                 </Droppable>
               ) : (
-                <DisplayComponentBasedOnType type={col.type} />
+                componentList.find((entry) => entry.id === col.type)?.card || null
               )}
             </React.Fragment>
           ))}
