@@ -1,5 +1,6 @@
-import React from 'react';
-import { DndContext } from '@dnd-kit/core';
+import React, { useState } from 'react';
+import { DndContext, DragOverlay } from '@dnd-kit/core';
+import { createPortal } from 'react-dom';
 
 import {
   addItem,
@@ -9,12 +10,25 @@ import {
 
 import { MockedUIComposer } from './wired-elements/MockedUIComposer';
 import { useDispatch } from 'react-redux';
+import { restrictToWindowEdges } from '@dnd-kit/modifiers';
+import { DisplayComponentBasedOnType } from './wired-elements/DisplayComponentBasedOnType';
 
 export function DragDropContainer() {
+  const [activeId, setActiveId] = useState(null);
   const dispatch = useDispatch();
 
   return (
     <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
+      {createPortal(
+        <DragOverlay dropAnimation={null} modifiers={[restrictToWindowEdges]}>
+          {activeId ? (
+            <div style={{backgroundColor: `var(--sl-color-primary-50)`}}>
+              <DisplayComponentBasedOnType type={activeId} />
+            </div>
+          ) : null}
+        </DragOverlay>,
+        document.body
+      )}
       <MockedUIComposer />
     </DndContext>
   );
@@ -31,7 +45,8 @@ export function DragDropContainer() {
     }
   }
 
-  function handleDragStart() {
+  function handleDragStart(event: any) {
+    setActiveId(event.active.id);
     dispatch(setDragStart());
   }
 }
