@@ -42,10 +42,11 @@ export const cardGroups: CardGroup[] = [
     ],
   },
   { title: 'Dialogs', cards: [{ title: 'Dialogs', entries: dialogEntries }] },
-  {
-    title: 'Calendars',
-    cards: [{ title: 'Calendars', entries: calendarEntries }],
-  },
+  // does not work well in shoelace's dark theme
+  // {
+  //   title: 'Calendars',
+  //   cards: [{ title: 'Calendars', entries: calendarEntries }],
+  // },
   {
     title: 'Progress Indicators',
     cards: [

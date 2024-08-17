@@ -7,7 +7,7 @@ export function TopLevelContainer({
   right: ReactNode;
 }) {
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row" style={{ fontFamily: `var(--sl-font-sans)`}}>
       <div
         style={{
           height: `clamp(100vh, 100vh, 100vh)`,
