@@ -204,12 +204,7 @@ const entries = [
 ];
 
 export const DisplayComponentBasedOnType = ({ type }) => {
-    const renderCard = () => {
-        const entry = entries.find((entry) => entry.id === type);
-        if (entry) {
-            return entry.card;
-        }
-        return null;
-    };
-    return <>{renderCard()}</>;
+  const entry = entries.find((entry) => entry.id === type);
+  return entry ? entry.card : null;
 };
+
