@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { DndContext, DragOverlay } from '@dnd-kit/core';
+import { restrictToWindowEdges } from '@dnd-kit/modifiers';
+
 import { createPortal } from 'react-dom';
 
 import {
@@ -8,10 +10,13 @@ import {
   setDragEnd,
 } from './redux/compose-playground/compose-playground-slice';
 
-import { MockedUIComposer } from './wired-elements/MockedUIComposer';
 import { useDispatch } from 'react-redux';
-import { restrictToWindowEdges } from '@dnd-kit/modifiers';
+
+import { UIComposer } from './ui-composer-sections/UIComposer';
+
 import { componentAndIdArray } from './wired-elements/card-groups';
+import { cardGroupsInitialState } from './wired-elements/card-groups-initial-state';
+import { cardGroups } from './wired-elements/card-groups';
 
 export function DragDropContainer() {
   const [activeId, setActiveId] = useState(null);
@@ -46,7 +51,7 @@ export function DragDropContainer() {
         </DragOverlay>,
         document.body
       )}
-      <MockedUIComposer />
+      <UIComposer cardGroups={cardGroups} cardGroupsInitialState={cardGroupsInitialState} componentList={componentAndIdArray}/>
     </DndContext>
   );
 }
