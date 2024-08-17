@@ -18,7 +18,10 @@ export function TopLevelContainer({
       >
         {left}
       </div>
-      <div className="flex-1">{right}</div>
+      <div style={{
+        height: `clamp(100vh, 100vh, 100vh)`,
+        overflow: `scroll`,
+      }} className="flex-1">{right}</div>
     </div>
   );
 }
