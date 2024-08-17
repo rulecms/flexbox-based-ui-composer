@@ -15,7 +15,7 @@ import { useDispatch } from 'react-redux';
 import { UIComposer } from './ui-composer-sections/UIComposer';
 
 import { cardGroups } from './wired-elements/component-metadata';
-
+import { cardGroups as displayCardGroups } from './display-wired-elements/component-metadata';
 import {
   getComponentList,
   getCardGroupsInitialState,
@@ -23,6 +23,8 @@ import {
 
 const componentList = getComponentList(cardGroups);
 const cardGroupsInitialState = getCardGroupsInitialState(cardGroups);
+
+const displayComponentList = getComponentList(displayCardGroups);
 
 export function DragDropContainer() {
   const [activeId, setActiveId] = useState(null);
@@ -62,6 +64,7 @@ export function DragDropContainer() {
         cardGroups={cardGroups}
         cardGroupsInitialState={cardGroupsInitialState}
         componentList={componentList}
+        displayComponentList={displayComponentList}
       />
     </DndContext>
   );

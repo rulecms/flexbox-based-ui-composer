@@ -7,6 +7,7 @@ export function UIComposer({
   cardGroups,
   cardGroupsInitialState,
   componentList,
+  displayComponentList,
 }) {
   const left = (
     <SelectionContainer
@@ -19,7 +20,7 @@ export function UIComposer({
   return (
     <TopLevelContainer
       left={left}
-      right={<ComposePlaygroundContainer componentList={componentList} />}
+      right={<ComposePlaygroundContainer componentList={displayComponentList} />}
     />
   );
 }
