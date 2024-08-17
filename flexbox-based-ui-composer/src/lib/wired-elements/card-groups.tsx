@@ -55,3 +55,5 @@ export const cardGroups: CardGroup[] = [
     ],
   },
 ];
+
+export const  componentAndIdArray = cardGroups.flatMap((group) => group.cards.flatMap((card) => card.entries));
