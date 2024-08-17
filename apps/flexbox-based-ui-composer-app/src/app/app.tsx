@@ -9,7 +9,10 @@ setBasePath('https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/')
 
 export function App() {
   return (
-    <FlexboxBasedUiComposer />
+    <>
+      <h1 style={{marginLeft: `var(--sl-spacing-medium)`}}>Welcome</h1>
+      <FlexboxBasedUiComposer />
+    </>
   );
 }
 
