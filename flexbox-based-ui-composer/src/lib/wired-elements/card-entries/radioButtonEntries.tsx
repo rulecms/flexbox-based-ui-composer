@@ -1,4 +1,4 @@
-import { WiredRadio } from "../components/wired-radio";
+import { WiredRadio } from "../index";
 
 export const radioButtonEntries = [
   { id: 'wired-radio-default', card: <WiredRadio>Radio 1</WiredRadio> },

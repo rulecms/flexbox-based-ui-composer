@@ -1,3 +1,3 @@
-import { WiredTabs } from "../components/wired-tabs";
+import { WiredTabs } from "../index";
 
 export const tabEntries = [{ id: 'wired-tabs-default', card: <WiredTabs /> }];

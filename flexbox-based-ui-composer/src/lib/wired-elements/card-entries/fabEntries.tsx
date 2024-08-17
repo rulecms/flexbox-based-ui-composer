@@ -1,5 +1,5 @@
 import { Favorite, Close, ThumbUp, Star, Check } from "@mui/icons-material";
-import { WiredFab } from "../components/wired-fab";
+import { WiredFab } from "../index";
 
 export const fabEntries = [
   {

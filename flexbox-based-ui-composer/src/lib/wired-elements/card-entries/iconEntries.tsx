@@ -1,5 +1,5 @@
 import { Favorite, Close, ThumbUp, Star, Check } from "@mui/icons-material";
-import { WiredIconButton } from "../components/wired-icon-button";
+import { WiredIconButton } from "../index";
 
 export const iconEntries = [
   {
