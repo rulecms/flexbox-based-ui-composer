@@ -18,7 +18,7 @@ import {
   cardGroups,
   componentList,
   cardGroupsInitialState,
-} from './wired-elements/card-groups';
+} from './wired-elements/component-metadata';
 
 export function DragDropContainer() {
   const [activeId, setActiveId] = useState(null);
