@@ -1,5 +1,5 @@
 import { SelectionPanel } from '../ui-composer-sections/SelectionPanel';
-import { DraggableWiredElement } from './DraggableWiredElement';
+import { DraggableWithoutButtonLook } from "../DraggableWithoutButtonLook";
 import { useSelector } from 'react-redux';
 
 import { cardGroups } from './card-groups';
@@ -34,11 +34,11 @@ function RenderSelectionPanel({
     <SelectionPanel title={title}>
       {entries.map((entry) => (
         <div key={`${entry.id}-container`}>
-          <DraggableWiredElement
-            key={entry.id}
+          <DraggableWithoutButtonLook
             id={entry.id}
-            card={entry.card}
-          />
+          >
+            {entry.card}
+          </DraggableWithoutButtonLook>
         </div>
       ))}
     </SelectionPanel>
