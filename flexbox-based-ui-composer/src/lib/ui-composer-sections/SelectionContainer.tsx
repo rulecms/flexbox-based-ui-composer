@@ -11,7 +11,9 @@ export function SelectionContainer({
   return (
     <div
       style={{
-        padding: `var(--sl-spacing-small)`,
+        paddingLeft: `var(--sl-spacing-small)`,
+        paddingRight: `var(--sl-spacing-small)`,
+        paddingBottom: `var(--sl-spacing-small)`,
       }}
     >
       <div className="flex flex-column flex-wrap">
