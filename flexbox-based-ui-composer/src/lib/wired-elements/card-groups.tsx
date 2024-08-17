@@ -1,20 +1,19 @@
-import { CardGroup } from "../types";
-import { buttonEntries } from "./card-entries/buttonEntries";
-import { calendarEntries } from "./card-entries/calendarEntries";
-import { cardEntries } from "./card-entries/cardEntries";
-import { dialogEntries } from "./card-entries/dialogEntries";
-import { dividerEntries } from "./card-entries/dividerEntries";
-import { fabEntries } from "./card-entries/fabEntries";
-import { formEntries } from "./card-entries/formEntries";
-import { iconEntries } from "./card-entries/iconEntries";
-import { linkEntries } from "./card-entries/linkEntries";
-import { mediaEntries } from "./card-entries/mediaEntries";
-import { progressEntries } from "./card-entries/progressEntries";
-import { radioButtonEntries } from "./card-entries/radioButtonEntries";
-import { radioGroupEntries } from "./card-entries/radioGroupEntries";
-import { spinnerEntries } from "./card-entries/spinnerEntries";
-import { tabEntries } from "./card-entries/tabEntries";
-
+import { CardGroup, SelectionCardDisplayStatus } from '../types';
+import { buttonEntries } from './card-entries/buttonEntries';
+import { calendarEntries } from './card-entries/calendarEntries';
+import { cardEntries } from './card-entries/cardEntries';
+import { dialogEntries } from './card-entries/dialogEntries';
+import { dividerEntries } from './card-entries/dividerEntries';
+import { fabEntries } from './card-entries/fabEntries';
+import { formEntries } from './card-entries/formEntries';
+import { iconEntries } from './card-entries/iconEntries';
+import { linkEntries } from './card-entries/linkEntries';
+import { mediaEntries } from './card-entries/mediaEntries';
+import { progressEntries } from './card-entries/progressEntries';
+import { radioButtonEntries } from './card-entries/radioButtonEntries';
+import { radioGroupEntries } from './card-entries/radioGroupEntries';
+import { spinnerEntries } from './card-entries/spinnerEntries';
+import { tabEntries } from './card-entries/tabEntries';
 
 export const cardGroups: CardGroup[] = [
   { title: 'Cards', cards: [{ title: 'Cards', entries: cardEntries }] },
@@ -56,4 +55,14 @@ export const cardGroups: CardGroup[] = [
   },
 ];
 
-export const  componentAndIdArray = cardGroups.flatMap((group) => group.cards.flatMap((card) => card.entries));
+export const componentList = cardGroups.flatMap((group) =>
+  group.cards.flatMap((card) => card.entries)
+);
+
+export const cardGroupsInitialState: SelectionCardDisplayStatus[] =
+  cardGroups.map((group) => {
+    return {
+      cardGroupTitle: group.title,
+      displayStatus: true,
+    };
+  });
