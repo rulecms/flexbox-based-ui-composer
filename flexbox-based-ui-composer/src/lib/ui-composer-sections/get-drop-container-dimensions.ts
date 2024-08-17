@@ -12,7 +12,7 @@ export const getDropContainerDimensions = (
   }
   if(colCount === 1) {
     return {
-      height: `50px`,
+      height: `100%`,
       width: `100%`,
     };
   }
