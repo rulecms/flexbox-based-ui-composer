@@ -14,11 +14,15 @@ import { useDispatch } from 'react-redux';
 
 import { UIComposer } from './ui-composer-sections/UIComposer';
 
+import { cardGroups } from './wired-elements/component-metadata';
+
 import {
-  cardGroups,
-  componentList,
-  cardGroupsInitialState,
-} from './wired-elements/component-metadata';
+  getComponentList,
+  getCardGroupsInitialState,
+} from './utils/component-metadata-utilities';
+
+const componentList = getComponentList(cardGroups);
+const cardGroupsInitialState = getCardGroupsInitialState(cardGroups);
 
 export function DragDropContainer() {
   const [activeId, setActiveId] = useState(null);
@@ -47,8 +51,8 @@ export function DragDropContainer() {
         <DragOverlay dropAnimation={null} modifiers={[restrictToWindowEdges]}>
           {activeId ? (
             <div style={{ backgroundColor: `var(--sl-color-primary-50)` }}>
-              {componentList.find((entry) => entry.id === activeId)
-                ?.card || null}
+              {componentList.find((entry) => entry.id === activeId)?.card ||
+                null}
             </div>
           ) : null}
         </DragOverlay>,

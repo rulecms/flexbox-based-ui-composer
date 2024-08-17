@@ -54,15 +54,3 @@ export const cardGroups: CardGroup[] = [
     ],
   },
 ];
-
-export const componentList = cardGroups.flatMap((group) =>
-  group.cards.flatMap((card) => card.entries)
-);
-
-export const cardGroupsInitialState: SelectionCardDisplayStatus[] =
-  cardGroups.map((group) => {
-    return {
-      cardGroupTitle: group.title,
-      displayStatus: true,
-    };
-  });
