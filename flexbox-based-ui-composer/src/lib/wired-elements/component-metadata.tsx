@@ -1,4 +1,4 @@
-import { CardGroup, SelectionCardDisplayStatus } from '../types';
+import { CardGroup } from '../types';
 import { buttonEntries } from './card-entries/buttonEntries';
 import { calendarEntries } from './card-entries/calendarEntries';
 import { cardEntries } from './card-entries/cardEntries';
