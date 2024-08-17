@@ -1,6 +1,6 @@
 import { SelectionCardDisplayStatus } from "../types";
 
-export const selectionCardOptions : SelectionCardDisplayStatus[] = [
+export const cardGroupsInitialState : SelectionCardDisplayStatus[] = [
     {
         cardGroupTitle: 'Cards',
         displayStatus: true

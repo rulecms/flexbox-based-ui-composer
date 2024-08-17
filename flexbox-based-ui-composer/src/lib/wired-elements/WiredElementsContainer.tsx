@@ -2,7 +2,7 @@ import { SelectionPanel } from '../ui-composer-sections/SelectionPanel';
 import { DraggableWiredElement } from './DraggableWiredElement';
 import { useSelector } from 'react-redux';
 
-import { cardGroups } from './cardGroups';
+import { cardGroups } from './card-groups';
 
 function RenderSelectionPanel({
   title,

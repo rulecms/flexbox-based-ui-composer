@@ -1,4 +1,4 @@
-import { WiredButton } from "./components/wired-button";
+import { WiredButton } from "../components/wired-button";
 
 export const buttonEntries = [
   { id: 'wired-button-disabled', card: <WiredButton disabled={true} /> },

@@ -1,4 +1,4 @@
-import { WiredSpinner } from "./components/wired-spinner";
+import { WiredSpinner } from "../components/wired-spinner";
 
 export const spinnerEntries = [
   { id: 'wired-spinner-default', card: <WiredSpinner /> },

@@ -1,19 +1,19 @@
 import { CardGroup } from "../types";
-import { buttonEntries } from "./buttonEntries";
-import { calendarEntries } from "./calendarEntries";
-import { cardEntries } from "./cardEntries";
-import { dialogEntries } from "./dialogEntries";
-import { dividerEntries } from "./dividerEntries";
-import { fabEntries } from "./fabEntries";
-import { formEntries } from "./formEntries";
-import { iconEntries } from "./iconEntries";
-import { linkEntries } from "./linkEntries";
-import { mediaEntries } from "./mediaEntries";
-import { progressEntries } from "./progressEntries";
-import { radioButtonEntries } from "./radioButtonEntries";
-import { radioGroupEntries } from "./radioGroupEntries";
-import { spinnerEntries } from "./spinnerEntries";
-import { tabEntries } from "./tabEntries";
+import { buttonEntries } from "./card-entries/buttonEntries";
+import { calendarEntries } from "./card-entries/calendarEntries";
+import { cardEntries } from "./card-entries/cardEntries";
+import { dialogEntries } from "./card-entries/dialogEntries";
+import { dividerEntries } from "./card-entries/dividerEntries";
+import { fabEntries } from "./card-entries/fabEntries";
+import { formEntries } from "./card-entries/formEntries";
+import { iconEntries } from "./card-entries/iconEntries";
+import { linkEntries } from "./card-entries/linkEntries";
+import { mediaEntries } from "./card-entries/mediaEntries";
+import { progressEntries } from "./card-entries/progressEntries";
+import { radioButtonEntries } from "./card-entries/radioButtonEntries";
+import { radioGroupEntries } from "./card-entries/radioGroupEntries";
+import { spinnerEntries } from "./card-entries/spinnerEntries";
+import { tabEntries } from "./card-entries/tabEntries";
 
 
 export const cardGroups: CardGroup[] = [

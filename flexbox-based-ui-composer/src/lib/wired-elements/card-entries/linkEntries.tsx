@@ -1,4 +1,4 @@
-import { WiredLink } from "./components/wired-link";
+import { WiredLink } from "../components/wired-link";
 
 export const linkEntries = [
   { id: 'wired-link-default', card: <WiredLink /> },

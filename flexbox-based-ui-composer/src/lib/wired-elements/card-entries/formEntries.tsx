@@ -1,11 +1,11 @@
-import { WiredCheckbox } from "./components/wired-checkbox";
-import { WiredCombo } from "./components/wired-combo";
-import { WiredInput } from "./components/wired-input";
-import { WiredListbox } from "./components/wired-listbox";
-import { WiredSearchInput } from "./components/wired-search-input";
-import { WiredSlider } from "./components/wired-slider";
-import { WiredTextarea } from "./components/wired-textarea";
-import { WiredToggle } from "./components/wired-toggle";
+import { WiredCheckbox } from "../components/wired-checkbox";
+import { WiredCombo } from "../components/wired-combo";
+import { WiredInput } from "../components/wired-input";
+import { WiredListbox } from "../components/wired-listbox";
+import { WiredSearchInput } from "../components/wired-search-input";
+import { WiredSlider } from "../components/wired-slider";
+import { WiredTextarea } from "../components/wired-textarea";
+import { WiredToggle } from "../components/wired-toggle";
 
 export const formEntries = [
   { id: 'wired-input-default', card: <WiredInput /> },

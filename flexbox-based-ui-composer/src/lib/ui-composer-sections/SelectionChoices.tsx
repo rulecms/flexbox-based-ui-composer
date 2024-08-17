@@ -10,9 +10,9 @@ import { SelectionCardDisplayStatus } from '../types';
 import { ComposePlaygroundState } from '../redux/compose-playground/types';
 
 export const SelectionChoices = ({
-  selectionCardOptions,
+  cardGroupsInitialState,
 }: {
-  selectionCardOptions: SelectionCardDisplayStatus[];
+  cardGroupsInitialState: SelectionCardDisplayStatus[];
 }) => {
   const dispatch = useDispatch();
   const selectionCardDisplayStatuses = useSelector(
@@ -21,12 +21,12 @@ export const SelectionChoices = ({
   );
   const visibleDisplayCardGroupTitles = Object.keys(selectionCardDisplayStatuses).filter( (key) => selectionCardDisplayStatuses[key] === true);
   useEffect(() => {
-    selectionCardOptions
+    cardGroupsInitialState
       .filter(({ displayStatus }) => displayStatus === true)
       .forEach(({ cardGroupTitle }) => {
         dispatch(switchOnSelectionCardDisplayStatus(cardGroupTitle));
       });
-  }, [selectionCardOptions, dispatch]);
+  }, [cardGroupsInitialState, dispatch]);
   const onselectionchange = (name: string) => {
     dispatch(toggleSelectionCardDisplayStatus(name));
   };
@@ -37,7 +37,7 @@ export const SelectionChoices = ({
         marginBottom: `var(--sl-spacing-x-small)`,
       }}
     >
-      {selectionCardOptions.map(({ cardGroupTitle }) => (
+      {cardGroupsInitialState.map(({ cardGroupTitle }) => (
         <SlCheckbox
           key={cardGroupTitle}
           name={cardGroupTitle}

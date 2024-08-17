@@ -1,4 +1,4 @@
-import { WiredCard } from "./components/wired-card";
+import { WiredCard } from "../components/wired-card";
 
 export const cardEntries = [
   { id: 'wired-card-default', card: <WiredCard /> },
