@@ -120,18 +120,29 @@ export const composePlaygroundSlice = createSlice({
     },
     toggleSelectionCardDisplayStatus: (state, action) => {
       const selectionCardId = action.payload;
-      const newStatus = !state.selectionCardDisplayStatuses[selectionCardId];;
+      const newStatus = !state.selectionCardDisplayStatuses[selectionCardId];
       state.selectionCardDisplayStatuses[selectionCardId] = newStatus;
     },
     switchOnSelectionCardDisplayStatus: (state, action) => {
       const selectionCardId = action.payload;
       state.selectionCardDisplayStatuses[selectionCardId] = true;
-    }
+    },
+    switchOffAllSelectionCardDisplayStatuses: (state) => {
+      for (const key in state.selectionCardDisplayStatuses) {
+        state.selectionCardDisplayStatuses[key] = false;
+      }
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addItem, setDragStart, setDragEnd, toggleSelectionCardDisplayStatus, switchOnSelectionCardDisplayStatus } =
-  composePlaygroundSlice.actions;
+export const {
+  addItem,
+  setDragStart,
+  setDragEnd,
+  toggleSelectionCardDisplayStatus,
+  switchOnSelectionCardDisplayStatus,
+  switchOffAllSelectionCardDisplayStatuses,
+} = composePlaygroundSlice.actions;
 
 export default composePlaygroundSlice.reducer;

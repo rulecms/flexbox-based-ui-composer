@@ -3,11 +3,13 @@ import SlCard from '@shoelace-style/shoelace/dist/react/card';
 import {
   toggleSelectionCardDisplayStatus,
   switchOnSelectionCardDisplayStatus,
+  switchOffAllSelectionCardDisplayStatuses,
 } from '../redux/compose-playground/compose-playground-slice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { SelectionCardDisplayStatus } from '../types';
 import { ComposePlaygroundState } from '../redux/compose-playground/types';
+import SlButton from '@shoelace-style/shoelace/dist/react/button';
 
 export const SelectionChoices = ({
   cardGroupsInitialState,
@@ -19,7 +21,9 @@ export const SelectionChoices = ({
     (state: { composePlayground: ComposePlaygroundState }) =>
       state.composePlayground.selectionCardDisplayStatuses
   );
-  const visibleDisplayCardGroupTitles = Object.keys(selectionCardDisplayStatuses).filter( (key) => selectionCardDisplayStatuses[key] === true);
+  const visibleDisplayCardGroupTitles = Object.keys(
+    selectionCardDisplayStatuses
+  ).filter((key) => selectionCardDisplayStatuses[key] === true);
   useEffect(() => {
     cardGroupsInitialState
       .filter(({ displayStatus }) => displayStatus === true)
@@ -37,6 +41,16 @@ export const SelectionChoices = ({
         marginBottom: `var(--sl-spacing-x-small)`,
       }}
     >
+      <SlButton
+        size="small"
+        variant="primary"
+        outline
+        style={{ marginRight: `var(--sl-spacing-small)` }}
+        onClick={() => dispatch(switchOffAllSelectionCardDisplayStatuses())}
+        disabled={!visibleDisplayCardGroupTitles.some((key) => selectionCardDisplayStatuses[key])}
+      >
+        Uncheck all
+      </SlButton>
       {cardGroupsInitialState.map(({ cardGroupTitle }) => (
         <SlCheckbox
           key={cardGroupTitle}
@@ -44,7 +58,7 @@ export const SelectionChoices = ({
           value={cardGroupTitle}
           onSlChange={() => onselectionchange(cardGroupTitle)}
           style={{
-            marginBottom: `var(--sl-spacing-x-small)`,
+            marginBottom: `var(--sl-spacing-small)`,
             marginRight: `var(--sl-spacing-small)`,
           }}
           checked={visibleDisplayCardGroupTitles.includes(cardGroupTitle)}
