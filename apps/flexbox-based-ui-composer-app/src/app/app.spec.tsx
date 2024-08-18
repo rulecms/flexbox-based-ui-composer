@@ -10,6 +10,6 @@ describe('App', () => {
 
   it('should have a greeting as the title', () => {
     const { getByText } = render(<App />);
-    expect(getByText(/Welcome flexbox-based-ui-composer-app/gi)).toBeTruthy();
+    expect(getByText(/UI flexbox-based-ui-composer-app/gi)).toBeTruthy();
   });
 });
