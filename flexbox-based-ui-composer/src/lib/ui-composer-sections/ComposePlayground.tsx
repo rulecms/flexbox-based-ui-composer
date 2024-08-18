@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { Droppable } from '../Droppable';
-
 import {
   ComposePlaygroundState,
   DisplayItemColumn,
@@ -16,7 +15,6 @@ export function ComposePlayground({ componentList }) {
     (state: { composePlayground: ComposePlaygroundState }) =>
       state.composePlayground.displayItemList
   );
-
   const hasNotStarted =
     displayItemList.length === 1 && displayItemList[0].columns.length === 1;
   if (hasNotStarted) {
@@ -25,7 +23,7 @@ export function ComposePlayground({ componentList }) {
   return (
     <>
       {displayItemList.map((row: DisplayItemRow) => (
-        <div key={row.id} className="flex auto flex-wrap flex-row">
+        <div key={row.id} className={`flex auto flex-row`}>
           {row.columns.map((col: DisplayItemColumn) => (
             <React.Fragment key={col.id}>
               {col.type === DisplayItemType.DroppableBox ? (
@@ -46,7 +44,8 @@ export function ComposePlayground({ componentList }) {
                   ></div>
                 </Droppable>
               ) : (
-                componentList.find((entry) => entry.id === col.type)?.card || null
+                componentList.find((entry) => entry.id === col.type)?.card ||
+                null
               )}
             </React.Fragment>
           ))}

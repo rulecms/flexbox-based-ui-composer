@@ -4,18 +4,20 @@ export function WiredCard({
   title = 'Title',
   content = 'Content',
   displayTitle = true,
+  displayContent = true,
 }: {
   elevation?: string;
   fill?: string;
   title?: string;
   content?: string;
   displayTitle?: boolean;
+  displayContent?: boolean;
 }) {
   return (
     <wired-card elevation={elevation} fill={fill}>
       <div>
         {displayTitle && <h2>{title || 'Title'}</h2>}
-        <p>{content || 'Content'}</p>
+        {displayContent && <p>{content || 'Content'}</p>}
       </div>
     </wired-card>
   );
