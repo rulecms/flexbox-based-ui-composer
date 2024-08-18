@@ -14,6 +14,12 @@ const initialState: ComposePlaygroundState = {
   displayItemList: [getNewStateForDroppableBox()],
   isDragState: false,
   selectionCardDisplayStatuses: {},
+  uiStyles: {
+    composeView: {
+      sidePadding: '150px',
+      backgroundColor: 'var(--sl-color-primary-50)',
+    },
+  },
 };
 
 const getIndexFromDroppedRefIdForAbove = (
