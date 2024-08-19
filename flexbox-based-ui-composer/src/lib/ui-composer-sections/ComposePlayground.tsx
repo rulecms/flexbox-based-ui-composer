@@ -45,7 +45,7 @@ export function ComposePlayground({ componentList }) {
                   ></div>
                 </Droppable>
               ) : (
-                <DisplayComponent>
+                <DisplayComponent id={col.id}>
                   {componentList.find((entry) => entry.id === col.type)?.card}
                 </DisplayComponent>
               )}
