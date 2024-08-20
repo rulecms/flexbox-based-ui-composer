@@ -21,12 +21,20 @@ export type UIStyles = {
   composeView: ComposeViewStyles;
 };
 
+export type SelectedDisplayItem = {
+  id: string;
+  containerId: string;
+  componentType: DisplayItemType;
+  
+};
+
 export type ComposePlaygroundState = {
   itemList: DisplayItemRow[];
   displayItemList: DisplayItemRow[];
   isDragState: boolean;
   selectionCardDisplayStatuses: { [key: string]: boolean };
   uiStyles: UIStyles;
+  selectedDisplayItem?: SelectedDisplayItem;
 };
 
 export type PositionIndicesItemList = {

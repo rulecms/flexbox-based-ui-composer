@@ -10,6 +10,7 @@ import { getDropContainerDimensions } from './get-drop-container-dimensions';
 import React from 'react';
 import { GetStartedContainer } from './GetStartedContainer';
 import { DisplayComponent } from './DisplayComponent';
+import { SetComponentProperties } from './SetComponentProperties';
 
 export function ComposePlayground({ componentList }) {
   const displayItemList = useSelector(
@@ -45,7 +46,7 @@ export function ComposePlayground({ componentList }) {
                   ></div>
                 </Droppable>
               ) : (
-                <DisplayComponent id={col.id}>
+                <DisplayComponent id={col.id} containerId={row.id} componentType={col.type}>
                   {componentList.find((entry) => entry.id === col.type)?.card}
                 </DisplayComponent>
               )}
@@ -53,6 +54,7 @@ export function ComposePlayground({ componentList }) {
           ))}
         </div>
       ))}
+      <SetComponentProperties/>
     </>
   );
 }

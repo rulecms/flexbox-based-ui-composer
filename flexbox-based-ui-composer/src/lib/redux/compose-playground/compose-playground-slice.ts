@@ -20,6 +20,7 @@ const initialState: ComposePlaygroundState = {
       backgroundColor: 'var(--sl-color-primary-50)',
     },
   },
+  selectedDisplayItem: undefined,
 };
 
 const getIndexFromDroppedRefIdForAbove = (
@@ -70,6 +71,9 @@ export const composePlaygroundSlice = createSlice({
   name: 'composePlayground',
   initialState,
   reducers: {
+    setSelectedDisplayItem: (state, action) => {
+      state.selectedDisplayItem = action.payload;
+    },
     setDragStart: (state) => {
       state.isDragState = true;
     },
@@ -146,6 +150,7 @@ export const {
   addItem,
   setDragStart,
   setDragEnd,
+  setSelectedDisplayItem,
   toggleSelectionCardDisplayStatus,
   switchOnSelectionCardDisplayStatus,
   switchOffAllSelectionCardDisplayStatuses,

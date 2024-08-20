@@ -1,4 +1,6 @@
 import { ReactNode, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setSelectedDisplayItem } from '../redux/compose-playground/compose-playground-slice';
 
 const style = `
 button.displayButtonContents > * {
@@ -8,11 +10,16 @@ button.displayButtonContents > * {
 `;
 export const DisplayComponent = ({
   id,
+  containerId,
+  componentType,
   children,
 }: {
   id: string;
+  containerId: string;
+  componentType: string;
   children: ReactNode;
 }) => {
+  const dispatch = useDispatch();
   useEffect(() => {
     async function preventCrashOnClickOfVideoControls() {
       // wait for render to complete
@@ -33,9 +40,13 @@ export const DisplayComponent = ({
   }
   const handleClick = (event) => {
     event.preventDefault();
-    event.stopPropagation();
-    console.log('DisplayComponent clicked', event.target);
-    // Add your desired logic here
+    dispatch(
+      setSelectedDisplayItem({
+        id,
+        containerId,
+        componentType,
+      })
+    );
   };
 
   return (
