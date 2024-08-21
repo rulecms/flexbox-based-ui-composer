@@ -1,8 +1,12 @@
 import SlDrawer from '@shoelace-style/shoelace/dist/react/drawer';
 import { useSelector, useDispatch } from 'react-redux';
 import { ComposePlaygroundState } from '../redux/compose-playground/types';
-import { setSelectedDisplayItem } from '../redux/compose-playground/compose-playground-slice';
+import {
+  setModifyingRowLayout,
+  setSelectedDisplayItem,
+} from '../redux/compose-playground/compose-playground-slice';
 import { ModifyComponentChoices } from './ModifyComponentChoices';
+import { ModifyRowLayout } from './modify-display-properties/ModifyRowLayout';
 
 export const SetComponentProperties = () => {
   const dispatch = useDispatch();
@@ -13,6 +17,28 @@ export const SetComponentProperties = () => {
   const closeDrawer = () => {
     dispatch(setSelectedDisplayItem(undefined));
   };
+
+  const onSetModifyRowLayout = () => {
+    dispatch(setModifyingRowLayout());
+  };
+
+  if (!selectedDisplayItem) {
+    return null;
+  }
+
+  const DisplaySelectedOption = () => {
+    if (selectedDisplayItem.modifyingRowLayout) {
+      return <ModifyRowLayout />;
+    }
+    return (
+      <ModifyComponentChoices
+        onClose={closeDrawer}
+        selectedDisplayItem={selectedDisplayItem}
+        onSetModifyRowLayout={onSetModifyRowLayout}
+      />
+    );
+  };
+
   //done this way to avoid typescript error on attribute --size
   const getStyles = () => {
     return {
@@ -26,12 +52,7 @@ export const SetComponentProperties = () => {
       onSlAfterHide={closeDrawer}
       style={getStyles()}
     >
-      {selectedDisplayItem && (
-        <ModifyComponentChoices
-          onClose={closeDrawer}
-          selectedDisplayItem={selectedDisplayItem}
-        />
-      )}
+      <DisplaySelectedOption />
     </SlDrawer>
   );
 };

@@ -25,6 +25,7 @@ export type SelectedDisplayItem = {
   id: string;
   containerId: string;
   componentType: DisplayItemType;
+  modifyingRowLayout?: boolean;
   
 };
 

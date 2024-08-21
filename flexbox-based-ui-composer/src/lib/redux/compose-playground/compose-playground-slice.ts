@@ -71,6 +71,13 @@ export const composePlaygroundSlice = createSlice({
   name: 'composePlayground',
   initialState,
   reducers: {
+    setModifyingRowLayout: (state) => {
+      if(!state.selectedDisplayItem) {
+        console.error('No selectedDisplayItem found');
+        return;
+      }
+      state.selectedDisplayItem.modifyingRowLayout = true;
+    },
     deleteComponent: (state, { payload }) => {
       const { id, containerId } = payload;
       const index = state.itemList.findIndex((item) => item.id === containerId);
@@ -176,6 +183,7 @@ export const {
   setDragStart,
   setDragEnd,
   setSelectedDisplayItem,
+  setModifyingRowLayout,
   toggleSelectionCardDisplayStatus,
   switchOnSelectionCardDisplayStatus,
   switchOffAllSelectionCardDisplayStatuses,
