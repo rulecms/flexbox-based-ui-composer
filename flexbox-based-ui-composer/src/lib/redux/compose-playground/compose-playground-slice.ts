@@ -71,6 +71,30 @@ export const composePlaygroundSlice = createSlice({
   name: 'composePlayground',
   initialState,
   reducers: {
+    deleteComponent: (state, { payload }) => {
+      const { id, containerId } = payload;
+      const index = state.itemList.findIndex((item) => item.id === containerId);
+      if (index === -1) {
+        console.error('No row item found with id: ', containerId);
+        return;
+      }
+      if (state.itemList[index].columns.length === 1) {
+        // delete entire row
+        state.itemList.splice(index, 1);
+      } else {
+        const colIndex = state.itemList[index].columns.findIndex(
+          (col) => col.id === id
+        );
+        if (colIndex === -1) {
+          console.error('No column item found with id: ', containerId);
+          return;
+        }
+        state.itemList[index].columns.splice(colIndex, 1);
+      }
+      state.displayItemList = getModifiedListWithDroppableContainers(
+        state.itemList
+      );
+    },
     setSelectedDisplayItem: (state, action) => {
       state.selectedDisplayItem = action.payload;
     },
@@ -148,6 +172,7 @@ export const composePlaygroundSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const {
   addItem,
+  deleteComponent,
   setDragStart,
   setDragEnd,
   setSelectedDisplayItem,

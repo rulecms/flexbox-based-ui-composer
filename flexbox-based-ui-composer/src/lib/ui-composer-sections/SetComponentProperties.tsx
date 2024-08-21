@@ -26,7 +26,12 @@ export const SetComponentProperties = () => {
       onSlAfterHide={closeDrawer}
       style={getStyles()}
     >
-      <ModifyComponentChoices onClose={closeDrawer}/>
+      {selectedDisplayItem && (
+        <ModifyComponentChoices
+          onClose={closeDrawer}
+          selectedDisplayItem={selectedDisplayItem}
+        />
+      )}
     </SlDrawer>
   );
 };
