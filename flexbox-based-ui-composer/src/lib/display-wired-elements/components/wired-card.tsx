@@ -1,6 +1,3 @@
-import { useSelector } from 'react-redux';
-import { ComposePlaygroundState } from '../../redux/compose-playground/types.d';
-
 export function WiredCard({
   elevation = '1',
   fill,
@@ -16,16 +13,10 @@ export function WiredCard({
   displayTitle?: boolean;
   displayContent?: boolean;
 }) {
-  const isDragState = useSelector(
-    ({ composePlayground }: { composePlayground: ComposePlaygroundState }) =>
-      composePlayground.isDragState
-  );
-
   return (
     <wired-card
       elevation={elevation}
       fill={fill}
-      style={{ width: `${isDragState ? '' : '100%'}` }}
     >
       <div>
         {displayTitle && <h2>{title || ''}</h2>}
