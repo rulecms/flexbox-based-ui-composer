@@ -45,9 +45,29 @@ export const HorizontalAlignment = () => {
     };
   };
 
+  const getTitle = (option: JustifyContentValues) => {
+    switch (option) {
+      case JustifyContentValues.FlexStart:
+        return 'Items are packed toward the start of the row.';
+      case JustifyContentValues.Center:
+        return 'Items are centered in the row.';
+      case JustifyContentValues.FlexEnd:
+        return 'Items are packed toward the end of the row.';
+      case JustifyContentValues.SpaceBetween:
+        return 'Items are evenly distributed in the row, with the first item at the start and the last item at the end.';
+      case JustifyContentValues.SpaceAround:
+        return 'Items are evenly distributed in the row, with equal space around each item.';
+      case JustifyContentValues.SpaceEvenly:
+        return 'Items are evenly distributed in the row, with equal space around each item and at the start and end of the row.';
+      default:
+        return '';
+    }
+  }
+  
   const DisplayOption = ({ option }: { option: JustifyContentValues }) => {
     return (
       <button
+        title={getTitle(option)}
         style={getButtonStyles(option)}
         onClick={() => setHorizontalAlignment(option)}
       >
