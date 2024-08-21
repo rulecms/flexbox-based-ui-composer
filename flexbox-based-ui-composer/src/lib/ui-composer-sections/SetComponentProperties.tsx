@@ -1,8 +1,8 @@
 import SlDrawer from '@shoelace-style/shoelace/dist/react/drawer';
-import SlButton from '@shoelace-style/shoelace/dist/react/button';
 import { useSelector, useDispatch } from 'react-redux';
 import { ComposePlaygroundState } from '../redux/compose-playground/types';
 import { setSelectedDisplayItem } from '../redux/compose-playground/compose-playground-slice';
+import { ModifyComponentChoices } from './ModifyComponentChoices';
 
 export const SetComponentProperties = () => {
   const dispatch = useDispatch();
@@ -13,14 +13,20 @@ export const SetComponentProperties = () => {
   const closeDrawer = () => {
     dispatch(setSelectedDisplayItem(undefined));
   };
+  //done this way to avoid typescript error on attribute --size
+  const getStyles = () => {
+    return {
+      ['--size' as any]: '50vw',
+    };
+  };
   return (
     <SlDrawer
-      label="Display Properties"
+      label="Modify Component Display"
       open={!!selectedDisplayItem}
       onSlAfterHide={closeDrawer}
+      style={getStyles()}
     >
-      <div>Set Component Properties</div>
-      <SlButton onClick={closeDrawer}>Close</SlButton>
+      <ModifyComponentChoices onClose={closeDrawer}/>
     </SlDrawer>
   );
 };
