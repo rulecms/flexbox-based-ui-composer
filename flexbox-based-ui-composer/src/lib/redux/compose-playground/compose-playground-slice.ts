@@ -90,6 +90,9 @@ export const composePlaygroundSlice = createSlice({
         return;
       }
       state.itemList[index].horizontalAlignment = horizontalAlignmentValue;
+      state.displayItemList = getModifiedListWithDroppableContainers(
+        state.itemList
+      );
     },
     setModifyingRowLayout: (state) => {
       if (!state.selectedDisplayItem) {

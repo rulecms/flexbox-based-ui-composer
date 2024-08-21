@@ -35,10 +35,7 @@ export const getModifiedListWithDroppableContainers = (
         id: `right-${col.id}-in-${row.id}`,
       });
     });
-    returnList.push({
-      id: row.id,
-      columns: cols,
-    });
+    returnList.push({...row, columns: cols});
     returnList.push({
       id: `row-below-${row.id}`,
       columns: [
