@@ -9,6 +9,7 @@ export type DisplayItemColumn = {
 
 export type DisplayItemRow = {
   id: string;
+  horizontalAlignment?: JustifyContentValues;
   columns: DisplayItemColumn[];
 };
 
@@ -26,7 +27,6 @@ export type SelectedDisplayItem = {
   containerId: string;
   componentType: DisplayItemType;
   modifyingRowLayout?: boolean;
-  
 };
 
 export type ComposePlaygroundState = {
@@ -42,3 +42,12 @@ export type PositionIndicesItemList = {
   rowIndex: number;
   colIndex: number;
 };
+
+export enum JustifyContentValues {
+  FlexStart = 'flex-start',
+  FlexEnd = 'flex-end',
+  Center = 'center',
+  SpaceBetween = 'space-between',
+  SpaceAround = 'space-around',
+  SpaceEvenly = 'space-evenly',
+}

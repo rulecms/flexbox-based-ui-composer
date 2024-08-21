@@ -71,8 +71,28 @@ export const composePlaygroundSlice = createSlice({
   name: 'composePlayground',
   initialState,
   reducers: {
+    setRowHorizontalAlignment: (
+      state,
+      { payload: horizontalAlignmentValue }
+    ) => {
+      if (
+        !state.selectedDisplayItem ||
+        !state.selectedDisplayItem.containerId
+      ) {
+        console.error('No selectedDisplayItem found');
+        return;
+      }
+      const index = state.itemList.findIndex(
+        (row) => row.id === state.selectedDisplayItem?.containerId
+      );
+      if (index === -1) {
+        console.error('Invalid row for the selected container id');
+        return;
+      }
+      state.itemList[index].horizontalAlignment = horizontalAlignmentValue;
+    },
     setModifyingRowLayout: (state) => {
-      if(!state.selectedDisplayItem) {
+      if (!state.selectedDisplayItem) {
         console.error('No selectedDisplayItem found');
         return;
       }
@@ -183,6 +203,7 @@ export const {
   setDragStart,
   setDragEnd,
   setSelectedDisplayItem,
+  setRowHorizontalAlignment,
   setModifyingRowLayout,
   toggleSelectionCardDisplayStatus,
   switchOnSelectionCardDisplayStatus,
