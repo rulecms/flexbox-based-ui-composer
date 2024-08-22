@@ -67,6 +67,21 @@ const getIndexFromDroppedRefIdForRight = (
   };
 };
 
+const getSelectedRowIndex = (state) => {
+  if (!state.selectedDisplayItem || !state.selectedDisplayItem.containerId) {
+    console.error('No selectedDisplayItem found');
+    return -1;
+  }
+  const index = state.itemList.findIndex(
+    (row) => row.id === state.selectedDisplayItem?.containerId
+  );
+  if (index === -1) {
+    console.error('Invalid row for the selected container id');
+    return -1;
+  }
+  return index;
+};
+
 export const composePlaygroundSlice = createSlice({
   name: 'composePlayground',
   initialState,
@@ -75,21 +90,18 @@ export const composePlaygroundSlice = createSlice({
       state,
       { payload: horizontalAlignmentValue }
     ) => {
-      if (
-        !state.selectedDisplayItem ||
-        !state.selectedDisplayItem.containerId
-      ) {
-        console.error('No selectedDisplayItem found');
-        return;
-      }
-      const index = state.itemList.findIndex(
-        (row) => row.id === state.selectedDisplayItem?.containerId
-      );
-      if (index === -1) {
-        console.error('Invalid row for the selected container id');
-        return;
-      }
+      const index = getSelectedRowIndex(state);
       state.itemList[index].horizontalAlignment = horizontalAlignmentValue;
+      state.displayItemList = getModifiedListWithDroppableContainers(
+        state.itemList
+      );
+    },
+    setRowVerticalAlignment: (
+      state,
+      { payload: verticalAlignmentValue }
+    ) => {
+      const index = getSelectedRowIndex(state);
+      state.itemList[index].verticalAlignment = verticalAlignmentValue;
       state.displayItemList = getModifiedListWithDroppableContainers(
         state.itemList
       );
@@ -206,6 +218,7 @@ export const {
   setDragStart,
   setDragEnd,
   setSelectedDisplayItem,
+  setRowVerticalAlignment,
   setRowHorizontalAlignment,
   setModifyingRowLayout,
   toggleSelectionCardDisplayStatus,

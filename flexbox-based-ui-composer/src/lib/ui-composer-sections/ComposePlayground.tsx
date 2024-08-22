@@ -13,7 +13,6 @@ import { GetStartedContainer } from './GetStartedContainer';
 import { DisplayComponent } from './DisplayComponent';
 import { SetComponentProperties } from './SetComponentProperties';
 
-
 export function ComposePlayground({ componentList }) {
   const displayItemList = useSelector(
     (state: { composePlayground: ComposePlaygroundState }) =>
@@ -26,6 +25,10 @@ export function ComposePlayground({ componentList }) {
     return row.horizontalAlignment || JustifyContentValues.FlexStart;
   };
 
+  const getVerticalAlignmentValue = (row) => {
+    return row.verticalAlignment || JustifyContentValues.FlexStart;
+  };
+
   if (hasNotStarted) {
     return <GetStartedContainer />;
   }
@@ -36,7 +39,10 @@ export function ComposePlayground({ componentList }) {
         <div
           key={row.id}
           className={`flex flex-row`}
-          style={{ justifyContent: getHorizontalAlignmentValue(row) }}
+          style={{
+            justifyContent: getHorizontalAlignmentValue(row),
+            alignItems: getVerticalAlignmentValue(row),
+          }}
         >
           {row.columns.map((col: DisplayItemColumn) => (
             <React.Fragment key={col.id}>

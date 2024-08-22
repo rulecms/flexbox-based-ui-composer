@@ -10,6 +10,7 @@ export type DisplayItemColumn = {
 export type DisplayItemRow = {
   id: string;
   horizontalAlignment?: JustifyContentValues;
+  verticalAlignment?: AlignItemsValues;
   columns: DisplayItemColumn[];
 };
 
@@ -50,4 +51,12 @@ export enum JustifyContentValues {
   SpaceBetween = 'space-between',
   SpaceAround = 'space-around',
   SpaceEvenly = 'space-evenly',
+}
+
+export enum AlignItemsValues {
+  FlexStart = 'flex-start',
+  FlexEnd = 'flex-end',
+  Center = 'center',
+  Baseline = 'baseline',
+  Stretch = 'stretch',
 }

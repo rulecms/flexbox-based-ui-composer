@@ -9,7 +9,7 @@ export const DisplayBox = ({
     <div
       style={{
         width,
-        height,
+        minHeight: height,
         margin: `var(--sl-spacing-3x-small)`,
         backgroundColor: `var(--sl-color-danger-300)`,
       }}
