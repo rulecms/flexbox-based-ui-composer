@@ -1,4 +1,4 @@
-import { HorizontalAlignment } from './HorizontalAlignment';
+import { HorizontalAlignment } from './horizontal-alignment/HorizontalAlignment';
 
 export const ModifyRowLayout = () => {
   return (

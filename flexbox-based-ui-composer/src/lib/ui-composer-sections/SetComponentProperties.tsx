@@ -6,7 +6,7 @@ import {
   setSelectedDisplayItem,
 } from '../redux/compose-playground/compose-playground-slice';
 import { ModifyComponentChoices } from './ModifyComponentChoices';
-import { ModifyRowLayout } from './modify-display-properties/row-layout/horizontal-alignment/ModifyRowLayout';
+import { ModifyRowLayout } from './modify-display-properties/row-layout/ModifyRowLayout';
 
 export const SetComponentProperties = () => {
   const dispatch = useDispatch();
