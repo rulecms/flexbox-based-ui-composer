@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import {
   ComposePlaygroundState,
   JustifyContentValues,
-} from '../../../redux/compose-playground/types.d';
-import { setRowHorizontalAlignment } from '../../../redux/compose-playground/compose-playground-slice';
+} from '../../../../redux/compose-playground/types.d';
+import { setRowHorizontalAlignment } from '../../../../redux/compose-playground/compose-playground-slice';
 import { useSelector } from 'react-redux';
 import { HorizontalAlignmentOptionDisplay } from './HorizontalAlignmentOptionDisplay';
 

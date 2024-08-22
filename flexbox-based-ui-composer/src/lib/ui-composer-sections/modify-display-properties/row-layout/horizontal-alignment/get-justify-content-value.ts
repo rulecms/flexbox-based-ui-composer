@@ -1,4 +1,4 @@
-import { JustifyContentValues } from '../../../redux/compose-playground/types.d';
+import { JustifyContentValues } from '../../../../redux/compose-playground/types.d';
 export const getJustifyContentValue = (option: JustifyContentValues) => {
   switch (option) {
     case JustifyContentValues.FlexStart:

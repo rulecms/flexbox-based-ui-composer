@@ -2,7 +2,7 @@ import { DisplayBox } from "./DisplayBox"
 import { getJustifyContentValue } from "./get-justify-content-value";
 import {
     JustifyContentValues,
-  } from '../../../redux/compose-playground/types.d';
+  } from '../../../../redux/compose-playground/types.d';
 
 export const HorizontalAlignmentOptionDisplay = ({option} : {option: JustifyContentValues}) => {
     const justifyContent = getJustifyContentValue(option);
