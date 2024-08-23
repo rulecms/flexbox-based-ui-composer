@@ -16,7 +16,7 @@ export function SelectionContainer({
         paddingBottom: `var(--sl-spacing-small)`,
       }}
     >
-      <div className="flex flex-column flex-wrap">
+      <div style={{ display: `flex`, gap: `var(--sl-spacing-2x-small)`, flexDirection: `column`}}>
         {selectionChoices}
         {cardGroups.map(({ title: cardGroupTitle, cards }) => {
           return cards.map(({ title: cardTitle, entries }) => {
