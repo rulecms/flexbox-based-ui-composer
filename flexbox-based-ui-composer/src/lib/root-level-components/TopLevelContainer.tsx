@@ -21,7 +21,7 @@ export function TopLevelContainer({
   const getWidthBasedOnDeviceDisplayType = () => {
     switch (deviceDisplayType) {
       case DeviceDisplayType.Phone:
-        return `300px`;
+        return `400px`;
       case DeviceDisplayType.Tablet:
         return `820px`;
       case DeviceDisplayType.Desktop:
@@ -33,6 +33,8 @@ export function TopLevelContainer({
     ({ composePlayground }: { composePlayground: ComposePlaygroundState }) =>
       composePlayground.uiStyles.composeView.backgroundColor
   );
+
+  const width = getWidthBasedOnDeviceDisplayType();
   return (
     <div
       className="flex flex-row"
@@ -63,7 +65,9 @@ export function TopLevelContainer({
           <div
             className="flex-1"
             style={{
-              minWidth: getWidthBasedOnDeviceDisplayType(),
+              maxWidth: width,
+              minWidth: width,
+              width,
               overflow: `hidden`,
             }}
           >
