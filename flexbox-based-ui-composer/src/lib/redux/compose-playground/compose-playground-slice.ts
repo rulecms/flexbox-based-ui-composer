@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ComposePlaygroundState, DeviceDisplayType, PositionIndicesItemList } from './types.d';
-import { getNewItemForItemType } from './get-new-item-for-item-type';
+import { ComposePlaygroundState, DeviceDisplayType } from './types.d';
 import { getNewStateForDroppableBox } from './get-new-state-for-droppable-box';
 import { _setDeviceDisplayType } from './reducers/device-display-type';
 import { _undo, _redo } from './reducers/undo-redo';
 import { onCompositionChange } from './reducers/on-composition-change';
+import { _addItem } from './reducers/add-item';
 
 // Redux Toolkit allows us to write "mutating" logic in reducers. It
 // doesn't actually mutate the state because it uses the Immer library,
@@ -25,50 +25,6 @@ const initialState: ComposePlaygroundState = {
     },
   },
   selectedDisplayItem: undefined,
-};
-
-const getIndexFromDroppedRefIdForAbove = (
-  droppedRefId: string,
-  itemList
-): number => {
-  const refId = droppedRefId.replace('above-', '');
-  return itemList.findIndex((item) => item.id === refId);
-};
-
-const getIndexFromDroppedRefIdForBelow = (
-  droppedRefId: string,
-  itemList
-): number => {
-  const refId = droppedRefId.replace('below-', '');
-  return itemList.findIndex((item) => item.id === refId) + 1;
-};
-
-// get the rowId and colId from a string of this format `left-${col.id}-in-${row.id}`,
-const getIndexFromDroppedRefIdForLeft = (
-  droppedRefId: string,
-  itemList
-): PositionIndicesItemList => {
-  const refId = droppedRefId.replace('left-', '');
-  const [colId, rowId] = refId.split('-in-');
-  const rowIndex = itemList.findIndex((item) => item.id === rowId);
-  return {
-    rowIndex,
-    colIndex: itemList[rowIndex].columns.findIndex((col) => col.id === colId),
-  };
-};
-
-const getIndexFromDroppedRefIdForRight = (
-  droppedRefId: string,
-  itemList
-): PositionIndicesItemList => {
-  const refId = droppedRefId.replace('right-', '');
-  const [colId, rowId] = refId.split('-in-');
-  const rowIndex = itemList.findIndex((item) => item.id === rowId);
-  return {
-    rowIndex,
-    colIndex:
-      itemList[rowIndex].columns.findIndex((col) => col.id === colId) + 1,
-  };
 };
 
 const getSelectedRowIndex = (state) => {
@@ -99,20 +55,17 @@ export const composePlaygroundSlice = createSlice({
     ) => {
       const index = getSelectedRowIndex(state);
       const curr = state.itemList[index].horizontalAlignment;
-      if(curr === horizontalAlignmentValue) {
+      if (curr === horizontalAlignmentValue) {
         return;
       }
-      const prev = [...state.itemList]
+      const prev = [...state.itemList];
       state.itemList[index].horizontalAlignment = horizontalAlignmentValue;
       onCompositionChange(prev, state);
     },
-    setRowVerticalAlignment: (
-      state,
-      { payload: verticalAlignmentValue }
-    ) => {
+    setRowVerticalAlignment: (state, { payload: verticalAlignmentValue }) => {
       const index = getSelectedRowIndex(state);
       const curr = state.itemList[index].verticalAlignment;
-      if(curr === verticalAlignmentValue) {
+      if (curr === verticalAlignmentValue) {
         return;
       }
       const prev = [...state.itemList];
@@ -158,53 +111,7 @@ export const composePlaygroundSlice = createSlice({
     setDragEnd: (state) => {
       state.isDragState = false;
     },
-    addItem: (state, action) => {
-      const itemType = action.payload.itemTypeToBeAdded;
-      const droppedRefId = action.payload.droppedRefId;
-      let modified = false;
-      const prev = [...state.itemList];
-      if (!(itemType?.length && droppedRefId?.length)) {
-        return;
-      }
-      const newItem = getNewItemForItemType(itemType);
-      if (state.itemList.length === 0) {
-        state.itemList.push(newItem);
-        modified = true;
-      } else if (droppedRefId.startsWith('above-')) {
-        const positionIndex = getIndexFromDroppedRefIdForAbove(
-          droppedRefId,
-          state.itemList
-        );
-        state.itemList.splice(positionIndex, 0, newItem);
-        modified = true;
-      } else if (droppedRefId.startsWith('below-')) {
-        const positionIndex = getIndexFromDroppedRefIdForBelow(
-          droppedRefId,
-          state.itemList
-        );
-        state.itemList.splice(positionIndex, 0, newItem);
-        modified = true;
-      } else if (droppedRefId.startsWith('left-')) {
-        const positionIndices = getIndexFromDroppedRefIdForLeft(
-          droppedRefId,
-          state.itemList
-        );
-        const row = state.itemList[positionIndices.rowIndex];
-        row.columns.splice(positionIndices.colIndex, 0, newItem.columns[0]);
-        modified = true;
-      } else if (droppedRefId.startsWith('right-')) {
-        const positionIndices = getIndexFromDroppedRefIdForRight(
-          droppedRefId,
-          state.itemList
-        );
-        const row = state.itemList[positionIndices.rowIndex];
-        row.columns.splice(positionIndices.colIndex, 0, newItem.columns[0]);
-        modified = true;
-      }
-      if (modified) {
-        onCompositionChange(prev, state);
-      }
-    },
+    addItem: _addItem,
     toggleSelectionCardDisplayStatus: (state, action) => {
       const selectionCardId = action.payload;
       const newStatus = !state.selectionCardDisplayStatuses[selectionCardId];
