@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useDroppable } from '@dnd-kit/core';
-import { DropContainerDimensions } from './types.d';
-import { ComposePlaygroundState } from './redux/compose-playground/types';
+import { DropContainerDimensions } from '../types';
+import { ComposePlaygroundState } from '../redux/compose-playground/types';
 
 export function Droppable({
   id,

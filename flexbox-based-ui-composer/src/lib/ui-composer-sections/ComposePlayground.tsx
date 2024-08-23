@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { Droppable } from '../Droppable';
+import { Droppable } from '../drag-drop/Droppable';
 import {
   ComposePlaygroundState,
   DisplayItemColumn,

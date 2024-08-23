@@ -8,18 +8,18 @@ import {
   addItem,
   setDragStart,
   setDragEnd,
-} from './redux/compose-playground/compose-playground-slice';
+} from '../redux/compose-playground/compose-playground-slice';
 
 import { useDispatch } from 'react-redux';
 
-import { UIComposer } from './ui-composer-sections/UIComposer';
+import { UIComposer } from '../ui-composer-sections/UIComposer';
 
-import { cardGroups } from './wired-elements/component-metadata';
-import { cardGroups as displayCardGroups } from './display-wired-elements/component-metadata';
+import { cardGroups } from '../wired-elements/component-metadata';
+import { cardGroups as displayCardGroups } from '../display-wired-elements/component-metadata';
 import {
   getComponentList,
   getCardGroupsInitialState,
-} from './utils/component-metadata-utilities';
+} from '../utils/component-metadata-utilities';
 
 const componentList = getComponentList(cardGroups);
 const cardGroupsInitialState = getCardGroupsInitialState(cardGroups);

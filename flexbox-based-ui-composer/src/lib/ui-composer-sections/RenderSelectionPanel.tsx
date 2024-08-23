@@ -1,4 +1,4 @@
-import { DraggableWithoutButtonLook } from "../DraggableWithoutButtonLook";
+import { DraggableWithoutButtonLook } from "../drag-drop/DraggableWithoutButtonLook";
 import { SelectionPanel } from "./SelectionPanel";
 import { useSelector } from 'react-redux';
 
