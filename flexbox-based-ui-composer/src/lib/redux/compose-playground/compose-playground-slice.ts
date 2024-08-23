@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ComposePlaygroundState, PositionIndicesItemList } from './types';
+import { ComposePlaygroundState, DeviceDisplayType, PositionIndicesItemList } from './types.d';
 import { getNewItemForItemType } from './get-new-item-for-item-type';
 import { getModifiedListWithDroppableContainers } from './get-modified-list-with-droppable-containers';
 import { getNewStateForDroppableBox } from './get-new-state-for-droppable-box';
+import { _setDeviceDisplayType } from './reducers/device-display-type';
 
 // Redux Toolkit allows us to write "mutating" logic in reducers. It
 // doesn't actually mutate the state because it uses the Immer library,
@@ -21,6 +22,7 @@ const initialState: ComposePlaygroundState = {
     },
   },
   selectedDisplayItem: undefined,
+  deviceDisplayType: DeviceDisplayType.Desktop,
 };
 
 const getIndexFromDroppedRefIdForAbove = (
@@ -86,6 +88,7 @@ export const composePlaygroundSlice = createSlice({
   name: 'composePlayground',
   initialState,
   reducers: {
+    setDeviceDisplayType: _setDeviceDisplayType,
     setRowHorizontalAlignment: (
       state,
       { payload: horizontalAlignmentValue }
@@ -217,6 +220,7 @@ export const {
   deleteComponent,
   setDragStart,
   setDragEnd,
+  setDeviceDisplayType,
   setSelectedDisplayItem,
   setRowVerticalAlignment,
   setRowHorizontalAlignment,

@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { useSelector } from 'react-redux';
 import { ComposePlaygroundState } from '../redux/compose-playground/types';
+import { TopNav } from '../top-nav/TopNav';
 
 export function TopLevelContainer({
   left,
@@ -36,12 +37,15 @@ export function TopLevelContainer({
         style={{
           height: `calc(100vh - 80px)`,
           overflow: `scroll`,
+          display: `flex`,
+          flexDirection: `column`,
         }}
         className="flex-1"
       >
-        <div className="flex flex-row" style={{ height: `100%` }}>
+        <TopNav />
+        <div className="flex flex-row" style={{ flexGrow: 1}}>
           <div style={{ width: composeViewPadding, backgroundColor }}></div>
-          <div className="flex-1">{right}</div>
+          <div className="flex-1" style={{ flexGrow: 1 }}>{right}</div>
           <div style={{ width: composeViewPadding, backgroundColor }}></div>
         </div>
       </div>

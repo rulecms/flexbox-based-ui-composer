@@ -37,6 +37,7 @@ export type ComposePlaygroundState = {
   selectionCardDisplayStatuses: { [key: string]: boolean };
   uiStyles: UIStyles;
   selectedDisplayItem?: SelectedDisplayItem;
+  deviceDisplayType: DeviceDisplayType;
 };
 
 export type PositionIndicesItemList = {
@@ -59,4 +60,10 @@ export enum AlignItemsValues {
   Center = 'center',
   Baseline = 'baseline',
   Stretch = 'stretch',
+}
+
+export enum DeviceDisplayType {
+  Phone = 'phone',
+  Tablet = 'tablet',
+  Desktop = 'desktop',
 }
