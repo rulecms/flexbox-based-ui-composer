@@ -5,6 +5,7 @@ import { _setDeviceDisplayType } from './reducers/device-display-type';
 import { _undo, _redo } from './reducers/undo-redo';
 import { onCompositionChange } from './reducers/on-composition-change';
 import { _addItem } from './reducers/add-item';
+import { _deleteItem } from './reducers/delete-item';
 
 // Redux Toolkit allows us to write "mutating" logic in reducers. It
 // doesn't actually mutate the state because it uses the Immer library,
@@ -79,29 +80,7 @@ export const composePlaygroundSlice = createSlice({
       }
       state.selectedDisplayItem.modifyingRowLayout = true;
     },
-    deleteComponent: (state, { payload }) => {
-      const { id, containerId } = payload;
-      const prev = [...state.itemList];
-      const index = state.itemList.findIndex((item) => item.id === containerId);
-      if (index === -1) {
-        console.error('No row item found with id: ', containerId);
-        return;
-      }
-      if (state.itemList[index].columns.length === 1) {
-        // delete entire row
-        state.itemList.splice(index, 1);
-      } else {
-        const colIndex = state.itemList[index].columns.findIndex(
-          (col) => col.id === id
-        );
-        if (colIndex === -1) {
-          console.error('No column item found with id: ', containerId);
-          return;
-        }
-        state.itemList[index].columns.splice(colIndex, 1);
-      }
-      onCompositionChange(prev, state);
-    },
+    deleteItem: _deleteItem,
     setSelectedDisplayItem: (state, action) => {
       state.selectedDisplayItem = action.payload;
     },
@@ -134,7 +113,7 @@ export const {
   undo,
   redo,
   addItem,
-  deleteComponent,
+  deleteItem,
   setDragStart,
   setDragEnd,
   setDeviceDisplayType,
