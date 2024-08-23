@@ -1,6 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ComposePlaygroundState, DeviceDisplayType } from './types.d';
-import { getNewStateForDroppableBox } from './get-new-state-for-droppable-box';
 import { _setDeviceDisplayType } from './reducers/device-display-type';
 import { _undo, _redo } from './reducers/undo-redo';
 import { _addItem } from './reducers/add-item';
@@ -9,34 +7,21 @@ import {
   _setRowHorizontalAlignment,
   _setRowVerticalAlignment,
 } from './reducers/set-row-layout';
+import { getInitialState } from './reducers/get-initial-state';
 
 // Redux Toolkit allows us to write "mutating" logic in reducers. It
 // doesn't actually mutate the state because it uses the Immer library,
 // which detects changes to a "draft state" and produces a brand new
 // immutable state based off those changes.
 // Also, no return statement is required from these functions.
-const initialState: ComposePlaygroundState = {
-  itemList: [],
-  displayItemList: [getNewStateForDroppableBox()],
-  previousItemListStates: [],
-  futureItemListStates: [],
-  isDragState: false,
-  selectionCardDisplayStatuses: {},
-  uiStyles: {
-    composeView: {
-      backgroundColor: 'var(--sl-color-neutral-500)',
-      deviceDisplayType: DeviceDisplayType.Desktop,
-    },
-  },
-  selectedDisplayItem: undefined,
-};
-
 export const composePlaygroundSlice = createSlice({
   name: 'composePlayground',
-  initialState,
+  initialState: getInitialState(),
   reducers: {
     undo: _undo,
     redo: _redo,
+    addItem: _addItem,
+    deleteItem: _deleteItem,
     setDeviceDisplayType: _setDeviceDisplayType,
     setRowHorizontalAlignment: _setRowHorizontalAlignment,
     setRowVerticalAlignment: _setRowVerticalAlignment,
@@ -47,9 +32,8 @@ export const composePlaygroundSlice = createSlice({
       }
       state.selectedDisplayItem.modifyingRowLayout = true;
     },
-    deleteItem: _deleteItem,
-    setSelectedDisplayItem: (state, action) => {
-      state.selectedDisplayItem = action.payload;
+    setSelectedDisplayItem: (state, { payload: selectedDisplayItem }) => {
+      state.selectedDisplayItem = selectedDisplayItem;
     },
     setDragStart: (state) => {
       state.isDragState = true;
@@ -57,14 +41,14 @@ export const composePlaygroundSlice = createSlice({
     setDragEnd: (state) => {
       state.isDragState = false;
     },
-    addItem: _addItem,
-    toggleSelectionCardDisplayStatus: (state, action) => {
-      const selectionCardId = action.payload;
+    toggleSelectionCardDisplayStatus: (state, { payload: selectionCardId }) => {
       const newStatus = !state.selectionCardDisplayStatuses[selectionCardId];
       state.selectionCardDisplayStatuses[selectionCardId] = newStatus;
     },
-    switchOnSelectionCardDisplayStatus: (state, action) => {
-      const selectionCardId = action.payload;
+    switchOnSelectionCardDisplayStatus: (
+      state,
+      { payload: selectionCardId }
+    ) => {
       state.selectionCardDisplayStatuses[selectionCardId] = true;
     },
     switchOffAllSelectionCardDisplayStatuses: (state) => {
