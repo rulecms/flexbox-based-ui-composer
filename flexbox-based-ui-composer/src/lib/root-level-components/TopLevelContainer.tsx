@@ -21,7 +21,7 @@ export function TopLevelContainer({
   const getWidthBasedOnDeviceDisplayType = () => {
     switch (deviceDisplayType) {
       case DeviceDisplayType.Phone:
-        return `400px`;
+        return `300px`;
       case DeviceDisplayType.Tablet:
         return `820px`;
       case DeviceDisplayType.Desktop:
