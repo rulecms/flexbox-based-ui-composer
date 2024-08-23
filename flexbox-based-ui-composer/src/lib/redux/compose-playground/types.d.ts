@@ -15,8 +15,8 @@ export type DisplayItemRow = {
 };
 
 export type ComposeViewStyles = {
-  sidePadding: string;
   backgroundColor: string;
+  deviceDisplayType: DeviceDisplayType;
 };
 
 export type UIStyles = {
@@ -37,7 +37,6 @@ export type ComposePlaygroundState = {
   selectionCardDisplayStatuses: { [key: string]: boolean };
   uiStyles: UIStyles;
   selectedDisplayItem?: SelectedDisplayItem;
-  deviceDisplayType: DeviceDisplayType;
 };
 
 export type PositionIndicesItemList = {

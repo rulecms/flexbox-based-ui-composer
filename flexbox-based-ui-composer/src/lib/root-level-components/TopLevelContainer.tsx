@@ -1,6 +1,9 @@
 import { ReactNode } from 'react';
 import { useSelector } from 'react-redux';
-import { ComposePlaygroundState } from '../redux/compose-playground/types';
+import {
+  ComposePlaygroundState,
+  DeviceDisplayType,
+} from '../redux/compose-playground/types.d';
 import { TopNav } from '../top-nav/TopNav';
 
 export function TopLevelContainer({
@@ -10,10 +13,22 @@ export function TopLevelContainer({
   left: ReactNode;
   right: ReactNode;
 }) {
-  const composeViewPadding = useSelector(
+  const deviceDisplayType = useSelector(
     ({ composePlayground }: { composePlayground: ComposePlaygroundState }) =>
-      composePlayground.uiStyles.composeView.sidePadding
+      composePlayground.uiStyles.composeView.deviceDisplayType
   );
+
+  const getWidthBasedOnDeviceDisplayType = () => {
+    switch (deviceDisplayType) {
+      case DeviceDisplayType.Phone:
+        return `400px`;
+      case DeviceDisplayType.Tablet:
+        return `820px`;
+      case DeviceDisplayType.Desktop:
+        return `1200px`;
+    }
+  };
+
   const backgroundColor = useSelector(
     ({ composePlayground }: { composePlayground: ComposePlaygroundState }) =>
       composePlayground.uiStyles.composeView.backgroundColor
@@ -43,10 +58,18 @@ export function TopLevelContainer({
         className="flex-1"
       >
         <TopNav />
-        <div className="flex flex-row" style={{ flexGrow: 1}}>
-          <div style={{ width: composeViewPadding, backgroundColor }}></div>
-          <div className="flex-1" style={{ flexGrow: 1 }}>{right}</div>
-          <div style={{ width: composeViewPadding, backgroundColor }}></div>
+        <div className="flex flex-row" style={{ flexGrow: 1 }}>
+          <div style={{ backgroundColor, flexGrow: 1 }} />
+          <div
+            className="flex-1"
+            style={{
+              minWidth: getWidthBasedOnDeviceDisplayType(),
+              overflow: `hidden`,
+            }}
+          >
+            {right}
+          </div>
+          <div style={{ backgroundColor, flexGrow: 1 }} />
         </div>
       </div>
     </div>

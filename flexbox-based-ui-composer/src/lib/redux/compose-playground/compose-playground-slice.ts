@@ -17,12 +17,11 @@ const initialState: ComposePlaygroundState = {
   selectionCardDisplayStatuses: {},
   uiStyles: {
     composeView: {
-      sidePadding: '150px',
       backgroundColor: 'var(--sl-color-primary-50)',
+      deviceDisplayType: DeviceDisplayType.Desktop,
     },
   },
   selectedDisplayItem: undefined,
-  deviceDisplayType: DeviceDisplayType.Desktop,
 };
 
 const getIndexFromDroppedRefIdForAbove = (

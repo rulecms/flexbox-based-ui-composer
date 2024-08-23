@@ -1,3 +1,3 @@
 export const _setDeviceDisplayType = (state, action) => {
-    state.deviceDisplayType = action.payload;
+    state.uiStyles.composeView.deviceDisplayType = action.payload;
 }
