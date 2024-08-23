@@ -37,6 +37,8 @@ export type ComposePlaygroundState = {
   selectionCardDisplayStatuses: { [key: string]: boolean };
   uiStyles: UIStyles;
   selectedDisplayItem?: SelectedDisplayItem;
+  previousItemListStates: DisplayItemRow[][];
+  futureItemListStates: DisplayItemRow[][];
 };
 
 export type PositionIndicesItemList = {

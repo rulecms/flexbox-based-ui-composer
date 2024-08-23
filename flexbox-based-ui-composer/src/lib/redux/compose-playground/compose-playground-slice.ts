@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ComposePlaygroundState, DeviceDisplayType, PositionIndicesItemList } from './types.d';
 import { getNewItemForItemType } from './get-new-item-for-item-type';
-import { getModifiedListWithDroppableContainers } from './get-modified-list-with-droppable-containers';
 import { getNewStateForDroppableBox } from './get-new-state-for-droppable-box';
 import { _setDeviceDisplayType } from './reducers/device-display-type';
+import { _undo, _redo } from './reducers/undo-redo';
+import { onCompositionChange } from './reducers/on-composition-change';
 
 // Redux Toolkit allows us to write "mutating" logic in reducers. It
 // doesn't actually mutate the state because it uses the Immer library,
@@ -13,6 +14,8 @@ import { _setDeviceDisplayType } from './reducers/device-display-type';
 const initialState: ComposePlaygroundState = {
   itemList: [],
   displayItemList: [getNewStateForDroppableBox()],
+  previousItemListStates: [],
+  futureItemListStates: [],
   isDragState: false,
   selectionCardDisplayStatuses: {},
   uiStyles: {
@@ -87,26 +90,34 @@ export const composePlaygroundSlice = createSlice({
   name: 'composePlayground',
   initialState,
   reducers: {
+    undo: _undo,
+    redo: _redo,
     setDeviceDisplayType: _setDeviceDisplayType,
     setRowHorizontalAlignment: (
       state,
       { payload: horizontalAlignmentValue }
     ) => {
       const index = getSelectedRowIndex(state);
+      const curr = state.itemList[index].horizontalAlignment;
+      if(curr === horizontalAlignmentValue) {
+        return;
+      }
+      const prev = [...state.itemList]
       state.itemList[index].horizontalAlignment = horizontalAlignmentValue;
-      state.displayItemList = getModifiedListWithDroppableContainers(
-        state.itemList
-      );
+      onCompositionChange(prev, state);
     },
     setRowVerticalAlignment: (
       state,
       { payload: verticalAlignmentValue }
     ) => {
       const index = getSelectedRowIndex(state);
+      const curr = state.itemList[index].verticalAlignment;
+      if(curr === verticalAlignmentValue) {
+        return;
+      }
+      const prev = [...state.itemList];
       state.itemList[index].verticalAlignment = verticalAlignmentValue;
-      state.displayItemList = getModifiedListWithDroppableContainers(
-        state.itemList
-      );
+      onCompositionChange(prev, state);
     },
     setModifyingRowLayout: (state) => {
       if (!state.selectedDisplayItem) {
@@ -117,6 +128,7 @@ export const composePlaygroundSlice = createSlice({
     },
     deleteComponent: (state, { payload }) => {
       const { id, containerId } = payload;
+      const prev = [...state.itemList];
       const index = state.itemList.findIndex((item) => item.id === containerId);
       if (index === -1) {
         console.error('No row item found with id: ', containerId);
@@ -135,9 +147,7 @@ export const composePlaygroundSlice = createSlice({
         }
         state.itemList[index].columns.splice(colIndex, 1);
       }
-      state.displayItemList = getModifiedListWithDroppableContainers(
-        state.itemList
-      );
+      onCompositionChange(prev, state);
     },
     setSelectedDisplayItem: (state, action) => {
       state.selectedDisplayItem = action.payload;
@@ -152,6 +162,7 @@ export const composePlaygroundSlice = createSlice({
       const itemType = action.payload.itemTypeToBeAdded;
       const droppedRefId = action.payload.droppedRefId;
       let modified = false;
+      const prev = [...state.itemList];
       if (!(itemType?.length && droppedRefId?.length)) {
         return;
       }
@@ -191,9 +202,7 @@ export const composePlaygroundSlice = createSlice({
         modified = true;
       }
       if (modified) {
-        state.displayItemList = getModifiedListWithDroppableContainers(
-          state.itemList
-        );
+        onCompositionChange(prev, state);
       }
     },
     toggleSelectionCardDisplayStatus: (state, action) => {
@@ -215,6 +224,8 @@ export const composePlaygroundSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const {
+  undo,
+  redo,
   addItem,
   deleteComponent,
   setDragStart,
