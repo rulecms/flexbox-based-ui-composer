@@ -1,7 +1,7 @@
-import { ComposePlaygroundContainer } from './ComposePlayground.container';
-import { SelectionContainer } from './SelectionContainer';
+import { ComposePlaygroundContainer } from './ui-composer-sections/ComposePlayground.container';
+import { SelectionContainer } from './ui-composer-sections/SelectionContainer';
 import { TopLevelContainer } from './TopLevelContainer';
-import { SelectionChoices } from './SelectionChoices';
+import { SelectionChoices } from './ui-composer-sections/SelectionChoices';
 
 export function UIComposer({
   cardGroups,
