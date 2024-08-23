@@ -17,6 +17,7 @@ export const SetDeviceDisplayType = () => {
   return (
     <SlRadioGroup
       name="select-device-display"
+      size="small"
       value={deviceDisplayType}
       onSlChange={(event: any) =>
         dispatch(setDeviceDisplayType(event.target.value))

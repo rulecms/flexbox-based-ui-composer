@@ -20,7 +20,7 @@ const initialState: ComposePlaygroundState = {
   selectionCardDisplayStatuses: {},
   uiStyles: {
     composeView: {
-      backgroundColor: 'var(--sl-color-primary-50)',
+      backgroundColor: 'var(--sl-color-neutral-500)',
       deviceDisplayType: DeviceDisplayType.Desktop,
     },
   },
