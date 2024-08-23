@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { useSelector } from 'react-redux';
-import { ComposePlaygroundState } from './redux/compose-playground/types';
+import { ComposePlaygroundState } from '../redux/compose-playground/types';
 
 export function TopLevelContainer({
   left,

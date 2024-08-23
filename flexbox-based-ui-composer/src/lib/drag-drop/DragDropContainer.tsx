@@ -12,7 +12,7 @@ import {
 
 import { useDispatch } from 'react-redux';
 
-import { UIComposer } from '../UIComposer';
+import { UIComposer } from '../root-level-components/UIComposer';
 
 import { cardGroups } from '../wired-elements/component-metadata';
 import { cardGroups as displayCardGroups } from '../display-wired-elements/component-metadata';
