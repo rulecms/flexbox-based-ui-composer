@@ -1,4 +1,4 @@
-import SlButton from '@shoelace-style/shoelace/dist/react/button';
+import SlButton from '@shoelace-style/shoelace/dist/react/button/index.js';
 import { deleteItem } from '../redux/compose-playground/compose-playground-slice';
 import { useDispatch } from 'react-redux';
 

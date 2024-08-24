@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import SlCard from '@shoelace-style/shoelace/dist/react/card';
+import SlCard from '@shoelace-style/shoelace/dist/react/card/index.js';
 
 const style = `
   .card-header {

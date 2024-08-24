@@ -1,5 +1,5 @@
-import SlIconButton from '@shoelace-style/shoelace/dist/react/icon-button';
-import SlTooltip from '@shoelace-style/shoelace/dist/react/tooltip';
+import SlIconButton from '@shoelace-style/shoelace/dist/react/icon-button/index.js';
+import SlTooltip from '@shoelace-style/shoelace/dist/react/tooltip/index.js';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   undo,

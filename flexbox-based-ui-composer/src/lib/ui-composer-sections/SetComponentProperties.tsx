@@ -1,4 +1,4 @@
-import SlDrawer from '@shoelace-style/shoelace/dist/react/drawer';
+import SlDrawer from '@shoelace-style/shoelace/dist/react/drawer/index.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { ComposePlaygroundState } from '../redux/compose-playground/types';
 import {

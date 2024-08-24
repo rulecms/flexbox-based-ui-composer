@@ -1,6 +1,6 @@
-import SlIcon from '@shoelace-style/shoelace/dist/react/icon';
-import SlRadioButton from '@shoelace-style/shoelace/dist/react/radio-button';
-import SlRadioGroup from '@shoelace-style/shoelace/dist/react/radio-group';
+import SlIcon from '@shoelace-style/shoelace/dist/react/icon/index.js';
+import SlRadioButton from '@shoelace-style/shoelace/dist/react/radio-button/index.js';
+import SlRadioGroup from '@shoelace-style/shoelace/dist/react/radio-group/index.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { setDeviceDisplayType } from '../redux/compose-playground/compose-playground-slice';
 import {

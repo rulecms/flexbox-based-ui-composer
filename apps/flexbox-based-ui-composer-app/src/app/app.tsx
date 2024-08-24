@@ -1,8 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FlexboxBasedUiComposer } from '@rulecms/flexbox-based-ui-composer';
-import SlAvatar from '@shoelace-style/shoelace/dist/react/avatar';
-import SlRadioButton from '@shoelace-style/shoelace/dist/react/radio-button';
-import SlRadioGroup from '@shoelace-style/shoelace/dist/react/radio-group';
+import SlAvatar from '@shoelace-style/shoelace/dist/react/avatar/index.js';
+import SlRadioButton from '@shoelace-style/shoelace/dist/react/radio-button/index.js';
+import SlRadioGroup from '@shoelace-style/shoelace/dist/react/radio-group/index.js';
 
 import '@shoelace-style/shoelace/dist/themes/light.css';
 import '@shoelace-style/shoelace/dist/themes/dark.css';

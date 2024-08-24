@@ -1,5 +1,5 @@
-import SlCheckbox from '@shoelace-style/shoelace/dist/react/checkbox';
-import SlCard from '@shoelace-style/shoelace/dist/react/card';
+import SlCheckbox from '@shoelace-style/shoelace/dist/react/checkbox/index.js';
+import SlCard from '@shoelace-style/shoelace/dist/react/card/index.js';
 import {
   toggleSelectionCardDisplayStatus,
   switchOnSelectionCardDisplayStatus,
@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { SelectionCardDisplayStatus } from '../types';
 import { ComposePlaygroundState } from '../redux/compose-playground/types';
-import SlButton from '@shoelace-style/shoelace/dist/react/button';
+import SlButton from '@shoelace-style/shoelace/dist/react/button/index.js';
 
 export const SelectionChoices = ({
   cardGroupsInitialState,
