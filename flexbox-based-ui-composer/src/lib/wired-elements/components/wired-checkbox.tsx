@@ -1,11 +1,3 @@
-export function WiredCheckbox({
-    checked = false,
-    onChange = () => {}
-}) {
-    return (
-        <wired-checkbox
-            checked={checked}
-            onChange={onChange}
-        ></wired-checkbox>
-    );
+export function WiredCheckbox({ checked = false }) {
+  return <wired-checkbox checked={checked}></wired-checkbox>;
 }
