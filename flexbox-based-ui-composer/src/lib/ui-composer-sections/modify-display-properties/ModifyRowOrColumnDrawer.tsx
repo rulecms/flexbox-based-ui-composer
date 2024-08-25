@@ -47,7 +47,7 @@ export const ModifyRowOrColumnDrawer = () => {
   };
   return (
     <SlDrawer
-      label="Modify Component Display"
+      label="Modify Display"
       open={!!selectedDisplayItem}
       onSlAfterHide={closeDrawer}
       style={getStyles()}
