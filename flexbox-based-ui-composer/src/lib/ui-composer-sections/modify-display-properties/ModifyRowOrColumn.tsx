@@ -5,7 +5,7 @@ import {
 } from '../../redux/compose-playground/compose-playground-slice';
 import { useDispatch } from 'react-redux';
 
-export const ModifyComponentChoices = ({
+export const ModifyRowOrColumn = ({
   onClose,
   selectedDisplayItem,
   onSetModifyRowLayout,

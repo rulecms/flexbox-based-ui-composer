@@ -5,10 +5,10 @@ import {
   setModifyingRowLayout,
   setSelectedDisplayItem,
 } from '../../redux/compose-playground/compose-playground-slice';
-import { ModifyComponentChoices } from './ModifyComponentChoices';
+import { ModifyRowOrColumn } from './ModifyRowOrColumn';
 import { ModifyRowLayout } from './row-layout/ModifyRowLayout';
 
-export const SetRowOrColumnProperties = () => {
+export const ModifyRowOrColumnDrawer = () => {
   const dispatch = useDispatch();
   const selectedDisplayItem = useSelector(
     ({ composePlayground }: { composePlayground: ComposePlaygroundState }) =>
@@ -31,7 +31,7 @@ export const SetRowOrColumnProperties = () => {
       return <ModifyRowLayout />;
     }
     return (
-      <ModifyComponentChoices
+      <ModifyRowOrColumn
         onClose={closeDrawer}
         selectedDisplayItem={selectedDisplayItem}
         onSetModifyRowLayout={onSetModifyRowLayout}
