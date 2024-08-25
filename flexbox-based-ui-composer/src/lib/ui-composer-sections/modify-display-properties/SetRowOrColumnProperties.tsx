@@ -1,14 +1,14 @@
 import SlDrawer from '@shoelace-style/shoelace/dist/react/drawer/index.js';
 import { useSelector, useDispatch } from 'react-redux';
-import { ComposePlaygroundState } from '../redux/compose-playground/types';
+import { ComposePlaygroundState } from '../../redux/compose-playground/types';
 import {
   setModifyingRowLayout,
   setSelectedDisplayItem,
-} from '../redux/compose-playground/compose-playground-slice';
+} from '../../redux/compose-playground/compose-playground-slice';
 import { ModifyComponentChoices } from './ModifyComponentChoices';
-import { ModifyRowLayout } from './modify-display-properties/row-layout/ModifyRowLayout';
+import { ModifyRowLayout } from './row-layout/ModifyRowLayout';
 
-export const SetComponentProperties = () => {
+export const SetRowOrColumnProperties = () => {
   const dispatch = useDispatch();
   const selectedDisplayItem = useSelector(
     ({ composePlayground }: { composePlayground: ComposePlaygroundState }) =>

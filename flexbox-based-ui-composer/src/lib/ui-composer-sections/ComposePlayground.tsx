@@ -11,7 +11,7 @@ import { getDropContainerDimensions } from './get-drop-container-dimensions';
 import React from 'react';
 import { GetStartedContainer } from './GetStartedContainer';
 import { DisplayComponent } from './DisplayComponent';
-import { SetComponentProperties } from './SetComponentProperties';
+import { SetRowOrColumnProperties } from './modify-display-properties/SetRowOrColumnProperties';
 
 export function ComposePlayground({ componentList }) {
   const displayItemList = useSelector(
@@ -76,7 +76,7 @@ export function ComposePlayground({ componentList }) {
           ))}
         </div>
       ))}
-      <SetComponentProperties />
+      <SetRowOrColumnProperties />
     </>
   );
 }
