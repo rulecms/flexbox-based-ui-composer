@@ -8,15 +8,13 @@ The building blocks are arranged using css flexbox, creating a responsive layout
 - [Watch the Demo on YouTube](https://youtu.be/bHrea1S_HD8)
 - [Subscribe to RuleCMS Youtube Channel](https://www.youtube.com/@rulecms)
 
+# Acknowledgements
+
 This tool is built on the shoulders of popular open source projects. Here are the main ones:
 - Shoelace Design System: https://github.com/shoelace-style/shoelace
 - Wired Elements for the building blocks: https://github.com/rough-stuff/wired-elements
 - DnD Kit for the drag and drop functionality: https://github.com/clauderic/dnd-kit
 - React Redux for state management: https://github.com/reduxjs/react-redux
-
-
-
-
 
 # Running Locally
 
