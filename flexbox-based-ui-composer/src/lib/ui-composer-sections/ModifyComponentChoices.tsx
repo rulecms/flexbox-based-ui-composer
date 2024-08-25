@@ -1,5 +1,8 @@
 import SlButton from '@shoelace-style/shoelace/dist/react/button/index.js';
-import { deleteItem } from '../redux/compose-playground/compose-playground-slice';
+import {
+  deleteItem,
+  duplicateSelectedRow,
+} from '../redux/compose-playground/compose-playground-slice';
 import { useDispatch } from 'react-redux';
 
 export const ModifyComponentChoices = ({
@@ -10,7 +13,7 @@ export const ModifyComponentChoices = ({
   const { id, containerId } = selectedDisplayItem;
   const dispatch = useDispatch();
 
-  const deleteItemCallback = () => {
+  const onDeleteItem = () => {
     dispatch(deleteItem({ id, containerId }));
     onClose();
   };
@@ -26,7 +29,10 @@ export const ModifyComponentChoices = ({
       }}
     >
       <SlButton onClick={onSetModifyRowLayout}>Modify Row Layout</SlButton>
-      <SlButton onClick={deleteItemCallback} variant="danger">
+      <SlButton onClick={() => dispatch(duplicateSelectedRow())}>
+        Duplicate Row
+      </SlButton>
+      <SlButton onClick={onDeleteItem} variant="danger">
         Delete Component
       </SlButton>
       <SlButton onClick={onClose}>Cancel</SlButton>
