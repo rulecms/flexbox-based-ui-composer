@@ -9,6 +9,7 @@ import {
 } from './reducers/set-row-layout';
 import { getInitialState } from './reducers/get-initial-state';
 import { _duplicateSelectedRow } from './reducers/duplicate-selected-row';
+import { _deleteSelectedRow } from './reducers/delete-selected-row';
 
 // Redux Toolkit allows us to write "mutating" logic in reducers. It
 // doesn't actually mutate the state because it uses the Immer library,
@@ -24,6 +25,7 @@ export const composePlaygroundSlice = createSlice({
     addItem: _addItem,
     deleteItem: _deleteItem,
     setDeviceDisplayType: _setDeviceDisplayType,
+    deleteSelectedRow: _deleteSelectedRow,
     duplicateSelectedRow: _duplicateSelectedRow,
     setRowHorizontalAlignment: _setRowHorizontalAlignment,
     setRowVerticalAlignment: _setRowVerticalAlignment,
@@ -67,8 +69,9 @@ export const {
   redo,
   addItem,
   deleteItem,
-  setDragStart,
   setDragEnd,
+  setDragStart,
+  deleteSelectedRow,
   setDeviceDisplayType,
   duplicateSelectedRow,
   setModifyingRowLayout,
