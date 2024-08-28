@@ -19,6 +19,7 @@ export const _deleteItem = (state, { payload: { id, containerId } }) => {
       return;
     }
     state.itemList[index].columns.splice(colIndex, 1);
+    state.selectedDisplayItem = null;
   }
   onCompositionChange(prev, state);
 };

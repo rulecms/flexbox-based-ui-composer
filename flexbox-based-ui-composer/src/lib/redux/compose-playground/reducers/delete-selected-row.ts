@@ -10,5 +10,6 @@ export const _deleteSelectedRow = (state) => {
   }
   const prev = [...state.itemList];
   state.itemList.splice(index, 1);
+  state.selectedDisplayItem = null;
   onCompositionChange(prev, state);
 };
