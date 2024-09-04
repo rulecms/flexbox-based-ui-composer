@@ -42,7 +42,7 @@ export function App() {
           }}
         >
           <SlAvatar image="/assets/RuleCMS Logo.png" label="RuleCMS" />
-          <h1>UI Mock Creator</h1>
+          <h1>RuleCMS Wireframe</h1>
         </div>
         <div
           style={{

@@ -1,5 +1,5 @@
 # Overview
-RuleCMS UI Mock Creator is a tool to easily create responsive UI mockups. It has a drag-and-drop interface featuring a collection of hand-drawn style UI elements. It's perfect for building wireframes, mockups, or enjoying the fun, sketch-like design.
+RuleCMS Wireframe is a tool to easily create responsive wireframe mockups. It has a drag-and-drop interface featuring a collection of hand-drawn style UI elements. It's perfect for building wireframes, mockups, or enjoying the fun, sketch-like design.
 
 The building blocks are arranged using css flexbox, creating a responsive layout. This makes this interface stand out against a lot of drag and drop tools that use a fixed layout and have to moved around pixel by pixel. They also do not adjust based on the browser's screen resolution.
 

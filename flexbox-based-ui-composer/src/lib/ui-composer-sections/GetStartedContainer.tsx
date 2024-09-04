@@ -21,7 +21,7 @@ export const GetStartedContainer: React.FC = () => {
         className="card-header"
         style={{ marginTop: `var(--sl-spacing-4x-large)` }}
       >
-        <h2 slot="header">Create Responsive UI Mocks</h2>
+        <h2 slot="header">Create Responsive Wireframes</h2>
         <p>
           Start creating your UI by dragging and dropping any widget from the
           sidebar here.
