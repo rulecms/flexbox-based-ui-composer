@@ -1,7 +1,8 @@
+import { getDeepCopy } from "../../deep-copy/deep-copy";
 import { onCompositionChange } from './on-composition-change';
 
 export const _deleteItem = (state, { payload: { id, containerId } }) => {
-  const prev = [...state.itemList];
+  const prev = getDeepCopy(state.itemList);
   const index = state.itemList.findIndex((item) => item.id === containerId);
   if (index === -1) {
     console.error('No row item found with id: ', containerId);

@@ -1,3 +1,4 @@
+import { getDeepCopy } from "../../deep-copy/deep-copy";
 import { onCompositionChange } from './on-composition-change';
 import { getSelectedRowIndex } from './get-selected-row-index';
 
@@ -10,7 +11,7 @@ export const _setRowHorizontalAlignment = (
   if (curr === horizontalAlignmentValue) {
     return;
   }
-  const prev = [...state.itemList];
+  const prev = getDeepCopy(state.itemList);
   state.itemList[index].horizontalAlignment = horizontalAlignmentValue;
   onCompositionChange(prev, state);
 };
@@ -24,7 +25,7 @@ export const _setRowVerticalAlignment = (
   if (curr === verticalAlignmentValue) {
     return;
   }
-  const prev = [...state.itemList];
+  const prev = getDeepCopy(state.itemList);
   state.itemList[index].verticalAlignment = verticalAlignmentValue;
   onCompositionChange(prev, state);
 };

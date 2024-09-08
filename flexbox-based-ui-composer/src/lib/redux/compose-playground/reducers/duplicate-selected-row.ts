@@ -1,3 +1,4 @@
+import { getDeepCopy } from "../../deep-copy/deep-copy";
 import { generateUniqueId } from '../generate-unique-id';
 import { getSelectedRowIndex } from './get-selected-row-index';
 import { onCompositionChange } from './on-composition-change';
@@ -19,7 +20,7 @@ export const _duplicateSelectedRow = (state) => {
     id,
     columns,
   };
-  const prev = [...state.itemList];
+  const prev = getDeepCopy(state.itemList);
   state.itemList.splice(index, 0, newRow);
   onCompositionChange(prev, state);
 };

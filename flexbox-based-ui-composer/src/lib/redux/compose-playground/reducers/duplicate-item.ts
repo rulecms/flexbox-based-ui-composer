@@ -1,3 +1,4 @@
+import { getDeepCopy } from "../../deep-copy/deep-copy";
 import { generateUniqueId } from '../generate-unique-id';
 import { onCompositionChange } from './on-composition-change';
 
@@ -18,7 +19,7 @@ export const _duplicateItem = (state, { payload: { id, containerId } }) => {
 
   const newCol = { ...col, id: generateUniqueId() };
 
-  const prev = [...state.itemList];
+  const prev = getDeepCopy(state.itemList);
   state.itemList[rowIndex].columns.splice(colIndex, 0, newCol);
   onCompositionChange(prev, state);
 };

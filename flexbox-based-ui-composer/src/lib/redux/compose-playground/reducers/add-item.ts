@@ -1,3 +1,4 @@
+import { getDeepCopy } from "../../deep-copy/deep-copy";
 import { PositionIndicesItemList } from '../types.d';
 import { getNewItemForItemType } from '../get-new-item-for-item-type';
 import { onCompositionChange } from './on-composition-change';
@@ -44,7 +45,7 @@ export const _addItem = (
   state,
   { payload: { itemTypeToBeAdded, droppedRefId } }
 ) => {
-  const prev = [...state.itemList];
+  const prev = getDeepCopy(state.itemList);
   if (!(itemTypeToBeAdded?.length && droppedRefId?.length)) {
     return;
   }
