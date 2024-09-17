@@ -4,7 +4,6 @@ RuleCMS Wireframe is a tool to easily create responsive wireframe mockups. It ha
 The building blocks are arranged using css flexbox, creating a responsive layout. This makes this interface stand out against a lot of drag and drop tools that use a fixed layout and have to moved around pixel by pixel. They also do not adjust based on the browser's screen resolution.
 
 # Demo
-- [Hosted demo site: https://demo.uimock.rulecms.com](https://demo.uimock.rulecms.com)
 - [Watch the Demo on YouTube](https://youtu.be/bHrea1S_HD8)
 - [Subscribe to RuleCMS Youtube Channel](https://www.youtube.com/@rulecms)
 
